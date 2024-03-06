@@ -5,6 +5,8 @@ import "./styles/fonts.scss"
 import Location from "./parts/location";
 import { Invitation } from "./parts/invitation";
 import Story from "./parts/story";
+import Galleria from "./parts/galleria";
+import Invite from "./parts/invite";
 
 function App() {
 
@@ -22,7 +24,8 @@ function App() {
         <Landing />
         <Invitation />
         <Story />
-        <Location />
+        <Galleria />
+        <Invite />
       </main>
     </ReactLenis>
   );
