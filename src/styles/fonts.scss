@@ -11,8 +11,19 @@
 main {
     font-family: "regular";
     font-weight: 300;
+    text-shadow: 0 0 0;
 }
 
 div {
     font-family: "regular";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /*reset for mobile browsers */
+    font-weight: normal;
 }
