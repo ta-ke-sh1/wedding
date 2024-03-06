@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Landing from "./parts/landing";
+import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
+import "./styles/main.scss"
+import "./styles/fonts.scss"
+import Location from "./parts/location";
+import { Invitation } from "./parts/invitation";
+import Story from "./parts/story";
 
 function App() {
+
+  useLenis(() => {
+    // called every scroll
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ReactLenis root options={{
+      lerp: 0.05,
+      wheelMultiplier: 0.5,
+      touchMultiplier: 0.5
+    }}>
+      <main className="App">
+        <Landing />
+        <Invitation />
+        <Story />
+        <Location />
+      </main>
+    </ReactLenis>
   );
 }
 

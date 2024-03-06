@@ -1,0 +1,18 @@
+@font-face {
+    font-family: "regular";
+    src: url("./fonts/regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "italic";
+    src: url("./fonts/italic.ttf") format("truetype");
+}
+
+main {
+    font-family: "regular";
+    font-weight: 300;
+}
+
+div {
+    font-family: "regular";
+}
