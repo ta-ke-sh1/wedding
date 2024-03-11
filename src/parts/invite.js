@@ -1,6 +1,7 @@
 import { Grid, FormControl, Button, FormLabel, TextField, InputLabel, Select, MenuItem, RadioGroup, Radio, FormControlLabel } from "@mui/material";
 import { useState } from "react";
 import { pink } from "@mui/material/colors";
+import FirebaseService from "../db/firestore";
 
 export default function Invite() {
   const pStyle = {
@@ -47,22 +48,37 @@ export default function Invite() {
 }
 
 function ResponseForm() {
-  const sendResponse = () => {};
+  const sendResponse = () => {
+    const firestoreService = new FirebaseService();
+    console.log(formData)
+    if (formData.name == "" || !formData.name) {
+      setError(true)
+      return
+    } else {
+      try {
+        firestoreService.addReply(formData)
+      } catch (e) {
+        console.log(e.toString())
+      }
+    }
+  };
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [willAttend, setWillAttend] = useState(false);
+
+  const [isError, setError] = useState(false)
+  const [errorText, setErrorText] = useState("")
 
   const [formData, setFormData] = useState({
     name: "",
     guestType: 0,
     willAttend: false,
-    attendees: 0,
+    attendees: 1,
     transport: 0,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(formData.willAttend + " -> " + value);
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
@@ -74,11 +90,11 @@ function ResponseForm() {
   };
 
   return (
-    <div>
+    <>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <FormControl fullWidth>
-            <TextField onChange={handleChange} name="name" value={formData.name} id="form-name" fullWidth label="Tên của bạn" variant="outlined" />
+            <TextField onChange={handleChange} name="name" value={formData.name} error={isError} id="form-name" fullWidth label="Tên của bạn" variant="outlined" required />
           </FormControl>
         </Grid>
         <Grid item xs={12}>
@@ -87,7 +103,7 @@ function ResponseForm() {
             <RadioGroup
               sx={{
                 flexDirection: "row",
-                justifyContent: "space-around",
+                justifyContent: "space-between",
               }}
               row
               aria-labelledby="demo-controlled-radio-buttons-group"
@@ -99,6 +115,10 @@ function ResponseForm() {
             >
               <FormControlLabel value={true} control={<Radio sx={radioStyle} />} label="Có" />
               <FormControlLabel value={false} control={<Radio sx={radioStyle} />} label="Không" />
+              <FormControlLabel value={false} control={<Radio sx={{
+                opacity: 0,
+                userSelect: 'none'
+              }} />} />
             </RadioGroup>
           </FormControl>
         </Grid>
@@ -110,7 +130,7 @@ function ResponseForm() {
                 <RadioGroup
                   sx={{
                     flexDirection: "row",
-                    justifyContent: "space-around",
+                    justifyContent: "space-between",
                   }}
                   row
                   aria-labelledby="demo-controlled-radio-buttons-group"
@@ -118,8 +138,8 @@ function ResponseForm() {
                   value={formData.guestType}
                   onChange={handleChange}
                 >
-                  <FormControlLabel value={0} control={<Radio sx={radioStyle} />} label="Chú rể" />
-                  <FormControlLabel value={1} control={<Radio sx={radioStyle} />} label="Cô dâu" />
+                  <FormControlLabel value={0} control={<Radio sx={radioStyle} />} label="Nhà trai" />
+                  <FormControlLabel value={1} control={<Radio sx={radioStyle} />} label="Nhà gái" />
                   <FormControlLabel value={2} control={<Radio sx={radioStyle} />} label="Cả hai" />
                 </RadioGroup>
               </FormControl>
@@ -194,7 +214,7 @@ function ResponseForm() {
           </Button>
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 }
 
