@@ -1,4 +1,16 @@
-import { Grid, FormControl, Button, FormLabel, TextField, InputLabel, Select, MenuItem, RadioGroup, Radio, FormControlLabel } from "@mui/material";
+import {
+  Grid,
+  FormControl,
+  Button,
+  FormLabel,
+  TextField,
+  InputLabel,
+  Select,
+  MenuItem,
+  RadioGroup,
+  Radio,
+  FormControlLabel,
+} from "@mui/material";
 import { useState } from "react";
 import { pink } from "@mui/material/colors";
 import FirebaseService from "../db/firestore";
@@ -19,27 +31,33 @@ export default function Invite() {
         position: "relative",
         alignItems: "center",
         justifyContent: "center",
-      }}
-    >
+        paddingTop: "100px",
+      }}>
       <div
-        className="center-position"
         style={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          maxWidth: "440px",
-        }}
-      >
+          width: "100vw",
+          position: "absolute",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}>
         <img
           src="/logo.png"
           width={"100%"}
           style={{
+            maxWidth: "360px",
             userSelect: "none",
           }}
         />
         <div>
-          <p style={pStyle}>để thuận tiện cho việc sắp xếp chỗ ngồi, vui lòng phản hồi giúp vợ chồng mình nhé!</p>
+          <p style={pStyle}>
+            để thuận tiện cho việc sắp xếp chỗ ngồi,
+            <br />
+            vui lòng phản hồi giúp vợ chồng mình nhé!
+          </p>
         </div>
         <ResponseForm />
       </div>
@@ -65,20 +83,19 @@ function ResponseForm() {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [willAttend, setWillAttend] = useState(false);
-
   const [isError, setError] = useState(false)
-  const [errorText, setErrorText] = useState("")
 
   const [formData, setFormData] = useState({
     name: "",
     guestType: 0,
     willAttend: false,
-    attendees: 1,
+    attendees: 0,
     transport: 0,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(formData.willAttend + " -> " + value);
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
@@ -91,7 +108,9 @@ function ResponseForm() {
 
   return (
     <>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{
+        width: { xs: '90vw', sm: '70vw', md: '50vw', lg: '35vw' }
+      }}>
         <Grid item xs={12}>
           <FormControl fullWidth>
             <TextField onChange={handleChange} name="name" value={formData.name} error={isError} id="form-name" fullWidth label="Tên của bạn" variant="outlined" required />
@@ -202,16 +221,9 @@ function ResponseForm() {
           <></>
         )}
         <Grid item xs={12}>
-          <Button
-            fullWidth
-            onClick={sendResponse}
-            variant="outlined"
-            sx={{
-              padding: "15px",
-            }}
-          >
-            Gửi phản hồi
-          </Button>
+          <Button fullWidth variant="outlined" sx={{
+            padding: '12px'
+          }}>Gửi phản hồi</Button>
         </Grid>
       </Grid>
     </>
@@ -252,4 +264,4 @@ const constants = {
       name: 4,
     },
   ],
-};
+}
