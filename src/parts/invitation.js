@@ -21,7 +21,7 @@ export function Invitation() {
       justify="center"
       sx={{
         marginTop: "30px",
-        height: { sm: "100vh", md: "70vh" },
+        height: { sm: "90vh", md: "80vh" },
         width: "100vw",
       }}
     >

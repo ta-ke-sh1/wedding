@@ -1,16 +1,4 @@
-import {
-  Grid,
-  FormControl,
-  Button,
-  FormLabel,
-  TextField,
-  InputLabel,
-  Select,
-  MenuItem,
-  RadioGroup,
-  Radio,
-  FormControlLabel,
-} from "@mui/material";
+import { Grid, FormControl, Button, FormLabel, TextField, InputLabel, Select, MenuItem, RadioGroup, Radio, FormControlLabel } from "@mui/material";
 import { useState } from "react";
 import { pink } from "@mui/material/colors";
 import FirebaseService from "../db/firestore";
@@ -27,37 +15,31 @@ export default function Invite() {
   return (
     <div
       style={{
-        minHeight: "100vh",
         position: "relative",
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: "100px",
-      }}>
+        paddingTop: "150px",
+        paddingBottom: "150px",
+      }}
+    >
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          width: "100vw",
-          position: "absolute",
-          left: "50%",
-          transform: "translateX(-50%)",
-        }}>
+        }}
+      >
         <img
           src="/logo.png"
           width={"100%"}
           style={{
-            maxWidth: "360px",
+            maxWidth: "320px",
             userSelect: "none",
           }}
         />
         <div>
-          <p style={pStyle}>
-            để thuận tiện cho việc sắp xếp chỗ ngồi,
-            <br />
-            vui lòng phản hồi giúp vợ chồng mình nhé!
-          </p>
+          <p style={{ ...pStyle, width: "75vw", maxWidth: "500px" }}>để thuận tiện cho việc sắp xếp chỗ ngồi, vui lòng phản hồi giúp vợ chồng mình nhé!</p>
         </div>
         <ResponseForm />
       </div>
@@ -68,22 +50,22 @@ export default function Invite() {
 function ResponseForm() {
   const sendResponse = () => {
     const firestoreService = new FirebaseService();
-    console.log(formData)
+    console.log(formData);
     if (formData.name == "" || !formData.name) {
-      setError(true)
-      return
+      setError(true);
+      return;
     } else {
       try {
-        firestoreService.addReply(formData)
+        firestoreService.addReply(formData);
       } catch (e) {
-        console.log(e.toString())
+        console.log(e.toString());
       }
     }
   };
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [willAttend, setWillAttend] = useState(false);
-  const [isError, setError] = useState(false)
+  const [isError, setError] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -108,9 +90,13 @@ function ResponseForm() {
 
   return (
     <>
-      <Grid container spacing={3} sx={{
-        width: { xs: '90vw', sm: '70vw', md: '50vw', lg: '35vw' }
-      }}>
+      <Grid
+        container
+        spacing={3}
+        sx={{
+          width: { xs: "90vw", sm: "70vw", md: "50vw", lg: "35vw" },
+        }}
+      >
         <Grid item xs={12}>
           <FormControl fullWidth>
             <TextField onChange={handleChange} name="name" value={formData.name} error={isError} id="form-name" fullWidth label="Tên của bạn" variant="outlined" required />
@@ -134,10 +120,17 @@ function ResponseForm() {
             >
               <FormControlLabel value={true} control={<Radio sx={radioStyle} />} label="Có" />
               <FormControlLabel value={false} control={<Radio sx={radioStyle} />} label="Không" />
-              <FormControlLabel value={false} control={<Radio sx={{
-                opacity: 0,
-                userSelect: 'none'
-              }} />} />
+              <FormControlLabel
+                value={false}
+                control={
+                  <Radio
+                    sx={{
+                      opacity: 0,
+                      userSelect: "none",
+                    }}
+                  />
+                }
+              />
             </RadioGroup>
           </FormControl>
         </Grid>
@@ -221,11 +214,18 @@ function ResponseForm() {
           <></>
         )}
         <Grid item xs={12}>
-          <Button fullWidth variant="outlined" sx={{
-            padding: '12px'
-          }}>Gửi phản hồi</Button>
+          <Button
+            fullWidth
+            variant="outlined"
+            sx={{
+              padding: "12px",
+            }}
+          >
+            Gửi phản hồi
+          </Button>
         </Grid>
       </Grid>
+      <p>2024© Design & developed by ta-ke-sh1</p>
     </>
   );
 }
@@ -264,4 +264,4 @@ const constants = {
       name: 4,
     },
   ],
-}
+};
