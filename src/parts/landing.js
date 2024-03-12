@@ -10,10 +10,11 @@ export default function Landing() {
 
   return (
     <>
-      <div className="full-view"></div>
+      <div className="full-view" style={{ height: '100vh' }}></div>
       <div
         className="full-view absolute-position"
         style={{
+          height: '100vh',
           left: 0,
           top: 0,
           overflowX: "hidden",
