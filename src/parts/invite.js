@@ -18,8 +18,9 @@ export default function Invite() {
         position: "relative",
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: "150px",
-        paddingBottom: "150px",
+        paddingTop: "50px",
+        paddingBottom: "50px",
+        minHeight: '80vh'
       }}
     >
       <div
@@ -48,20 +49,40 @@ export default function Invite() {
 }
 
 function ResponseForm() {
-  const sendResponse = () => {
+
+  const sendResponse = async () => {
     const firestoreService = new FirebaseService();
-    console.log(formData);
     if (formData.name == "" || !formData.name) {
       setError(true);
       return;
     } else {
       try {
-        firestoreService.addReply(formData);
-      } catch (e) {
+        const oldId = localStorage.getItem("cacheResponseId")
+        if (!oldId) {
+          const id = await firestoreService.addReply(formData);
+          formData.id = id;
+          localStorage.setItem("cacheResponseId", id)
+        } else {
+          await firestoreService.editReply(oldId, formData)
+        }
+        refreshForm();
+      }
+      catch (e) {
         console.log(e.toString());
       }
     }
   };
+
+  const refreshForm = () => {
+    setWillAttend(false)
+    setFormData({
+      name: "",
+      guestType: 0,
+      willAttend: false,
+      attendees: 0,
+      transport: 0,
+    })
+  }
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [willAttend, setWillAttend] = useState(false);
@@ -94,7 +115,7 @@ function ResponseForm() {
         container
         spacing={3}
         sx={{
-          width: { xs: "90vw", sm: "70vw", md: "50vw", lg: "35vw" },
+          width: { xs: "90vw", sm: "70vw", md: "60vw", lg: "45vw", xl: "30vw" },
         }}
       >
         <Grid item xs={12}>
@@ -215,6 +236,7 @@ function ResponseForm() {
         )}
         <Grid item xs={12}>
           <Button
+            onClick={sendResponse}
             fullWidth
             variant="outlined"
             sx={{
@@ -225,7 +247,7 @@ function ResponseForm() {
           </Button>
         </Grid>
       </Grid>
-      <p>2024© Design & developed by ta-ke-sh1</p>
+
     </>
   );
 }

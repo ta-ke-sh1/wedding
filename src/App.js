@@ -1,8 +1,7 @@
 import Landing from "./parts/landing";
-import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
+import { ReactLenis } from "@studio-freight/react-lenis";
 import "./styles/main.scss";
 import "./styles/fonts.scss";
-import Location from "./parts/location";
 import { Invitation } from "./parts/weddingCard";
 import Story from "./parts/story";
 import Galleria from "./parts/galleria";
@@ -10,10 +9,6 @@ import Invite from "./parts/invite";
 import Contact from "./parts/contact";
 
 function App() {
-    useLenis(() => {
-        // called every scroll
-    });
-
     return (
         <ReactLenis
             root
@@ -25,12 +20,19 @@ function App() {
         >
             <main className="App">
                 <Landing />
-                <Invitation />
                 <Contact />
                 <Story />
-                <Galleria />
+                <Invitation />
                 <Invite />
+                <Galleria />
             </main>
+            <div style={{
+                textAlign: 'center',
+                paddingBottom: '10px'
+            }}>
+                <p>2024© Design & developed by ta-ke-sh1</p>
+            </div>
+
         </ReactLenis>
     );
 }

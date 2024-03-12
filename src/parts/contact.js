@@ -5,7 +5,7 @@ export default function Contact() {
     <>
       <div
         style={{
-          marginTop: "150px",
+          marginTop: '240px',
           width: "100vw",
           textAlign: "center",
         }}
@@ -14,10 +14,10 @@ export default function Contact() {
           style={{
             textAlign: "center",
             fontSize: "52px",
-            marginBottom: "40px",
+            marginBottom: "50px",
           }}
         >
-          Chuyện của chúng mình
+          Lễ Thành Hôn
         </h1>
         <Grid container spacing={4}>
           <Grid item sm={12} md={2} xs={12}></Grid>
@@ -37,7 +37,7 @@ export default function Contact() {
                     marginBottom: "30px",
                     minWidth: "250px",
                     height: "30vh",
-                    width: "34.35vw",
+                    width: "30vw",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundImage: "url(/images/groom.jpg)",
@@ -73,7 +73,7 @@ export default function Contact() {
                     marginBottom: "30px",
                     minWidth: "250px",
                     height: "30vh",
-                    width: "34.35vw",
+                    width: "30vw",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundImage: "url(/images/bride.jpg)",

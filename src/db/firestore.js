@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore/lite';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAqJjX5cyg4engd16MNphZTLNIGRaNhjAI",
@@ -26,7 +26,7 @@ export default class FirebaseService {
     }
 
     async getReplyById(id) {
-        let snapshot = await getDoc(collection(db, "Invitations", id))
+        let snapshot = await getDoc(doc(db, "Invitations", id))
         if (snapshot.exists()) {
             return snapshot.data()
         } else {
@@ -39,16 +39,14 @@ export default class FirebaseService {
         const docRef = await addDoc(collection(db, "Invitations"), {
             ...reply
         })
-        console.log("Document written with ID: ", docRef.id);
+        return docRef.id;
     }
 
     async editReply(id, reply) {
-        const docRef = await updateDoc(collection(db, "Invitations", id), reply)
-        console.log("Document edited with ID: ", docRef.id);
+        await updateDoc(doc(db, "Invitations", id), reply)
     }
 
     async deleteReply(id) {
-        const docRef = await deleteDoc(collection(db, "Invitations", id))
-        console.log("Document deleted with ID: ", docRef.id);
+        await deleteDoc(doc(db, "Invitations", id))
     }
 }

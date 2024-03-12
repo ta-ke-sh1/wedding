@@ -20,23 +20,21 @@ export function Invitation() {
       alignItems="center"
       justify="center"
       sx={{
-        marginTop: "30px",
-        height: { sm: "100vh", md: "70vh" },
         width: "100vw",
+        padding: '120px 0'
       }}
     >
       <Grid sx={{ width: "100%", marginBottom: "40px", marginTop: "40px" }} item sm={12} md={6}>
         <Box display="flex" flexDirection={"column"} justifyContent="center" alignItems="center">
-          <div
-            style={{
-              width: "90%",
-              height: "420px",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundImage: "url(/images/6.jpg)",
-            }}
-          ></div>
+          <iframe
+            title="map-to-venue"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6365.13698448108!2d105.82689714171673!3d20.96945411566573!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acf8cb3861d9%3A0xd294605a751a1c4a!2zS2jDoWNoIHPhuqFuIE3GsOG7nW5nIFRoYW5oIEdyYW5kIEjDoCBO4buZaQ!5e0!3m2!1svi!2s!4v1710251388680!5m2!1svi!2s"
+            width="90%"
+            height="420px"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </Box>
       </Grid>
       <Grid sx={{ width: "100%" }} item sm={12} md={6}>
@@ -51,16 +49,16 @@ export function Invitation() {
             Save the date
           </h1>
           <p style={pStyle}>
-            We are delighted to invite you to join
+            Trân trọng kính mời tới dự lễ
             <br />
-            our wedding celebration on
+            thành hôn của hai chúng tôi vào
           </p>
-          <h1 style={h1Style}>17th April, 2024</h1>
+          <h1 style={h1Style}>ngày 17 tháng 4 năm 2024</h1>
           <p style={pStyle}>
-            Muong Thanh Grand Hotel Linh Dam <br />
-            142 Nghiem Xuan Yen
+            Khách sạn Mường Thanh Grand, Linh Đàm<br />
+            142 Nghiêm Xuân Yên
             <br />
-            Hoang Mai, Ha Noi
+            Hoàng Mai, Hà Nội
           </p>
         </Box>
       </Grid>
