@@ -40,3 +40,15 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+.polaroid-frame {
+  border-radius: 1px;
+  border: 15px solid #fafafa;
+  border-bottom: 50px solid #fafafa;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.show-image {
+  width: 200px;
+  height: 280px;
+}

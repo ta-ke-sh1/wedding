@@ -20,7 +20,7 @@ export default function Invite() {
         justifyContent: "center",
         paddingTop: "50px",
         paddingBottom: "50px",
-        minHeight: '80vh'
+        minHeight: "80vh",
       }}
     >
       <div
@@ -49,7 +49,6 @@ export default function Invite() {
 }
 
 function ResponseForm() {
-
   const sendResponse = async () => {
     const firestoreService = new FirebaseService();
     if (formData.name == "" || !formData.name) {
@@ -57,32 +56,31 @@ function ResponseForm() {
       return;
     } else {
       try {
-        const oldId = localStorage.getItem("cacheResponseId")
+        const oldId = localStorage.getItem("cacheResponseId");
         if (!oldId) {
           const id = await firestoreService.addReply(formData);
           formData.id = id;
-          localStorage.setItem("cacheResponseId", id)
+          localStorage.setItem("cacheResponseId", id);
         } else {
-          await firestoreService.editReply(oldId, formData)
+          await firestoreService.editReply(oldId, formData);
         }
         refreshForm();
-      }
-      catch (e) {
+      } catch (e) {
         console.log(e.toString());
       }
     }
   };
 
   const refreshForm = () => {
-    setWillAttend(false)
+    setWillAttend(false);
     setFormData({
       name: "",
       guestType: 0,
       willAttend: false,
       attendees: 0,
       transport: 0,
-    })
-  }
+    });
+  };
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [willAttend, setWillAttend] = useState(false);
@@ -247,7 +245,6 @@ function ResponseForm() {
           </Button>
         </Grid>
       </Grid>
-
     </>
   );
 }

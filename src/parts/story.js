@@ -16,15 +16,6 @@ export default function Story() {
     marginBottom: "40px",
   };
 
-  const polaroidStyle = {
-    width: "200px",
-    height: "280px",
-    borderRadius: "1px",
-    border: "15px solid #fafafa",
-    borderBottom: "50px solid #fafafa",
-    boxShadow: "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px",
-  };
-
   const bgImage = {
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -53,6 +44,7 @@ export default function Story() {
           md={4}
         >
           <div
+            className="polaroid-frame show-image"
             style={{
               position: "absolute",
               left: "52.5%",
@@ -60,10 +52,10 @@ export default function Story() {
               backgroundImage: "url(/images/2.jpg)",
               transform: "rotate(-20deg) translate(-50%, -50%)",
               ...bgImage,
-              ...polaroidStyle,
             }}
           ></div>
           <div
+            className="polaroid-frame show-image"
             style={{
               position: "absolute",
               left: "62.5%",
@@ -71,7 +63,6 @@ export default function Story() {
               backgroundImage: "url(/images/3.jpg)",
               transform: "rotate(-7deg) translate(-50%, -50%)",
               ...bgImage,
-              ...polaroidStyle,
             }}
           ></div>
         </Grid>
@@ -110,7 +101,7 @@ export default function Story() {
           sx={{
             width: "100%",
             position: "relative",
-            minHeight: "500px",
+            minHeight: "300px",
             zIndex: 100,
           }}
           item
@@ -118,6 +109,7 @@ export default function Story() {
           md={4}
         >
           <div
+            className="polaroid-frame show-image"
             style={{
               position: "absolute",
               left: "50%",
@@ -125,7 +117,6 @@ export default function Story() {
               backgroundImage: "url(/images/7.jpg)",
               transform: "rotate(6deg) translate(-50%, -50%)",
               ...bgImage,
-              ...polaroidStyle,
             }}
           ></div>
         </Grid>

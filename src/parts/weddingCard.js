@@ -10,8 +10,9 @@ export function Invitation() {
 
   const pStyle = {
     textAlign: "center",
-    lineHeight: "32px",
-    fontSize: "24px",
+    lineHeight: "28px",
+    fontSize: "20px",
+    maxWidth: "380px",
   };
 
   return (
@@ -21,7 +22,7 @@ export function Invitation() {
       justify="center"
       sx={{
         width: "100vw",
-        padding: '120px 0'
+        padding: "120px 0",
       }}
     >
       <Grid sx={{ width: "100%", marginBottom: "40px", marginTop: "40px" }} item sm={12} md={6}>
@@ -33,8 +34,8 @@ export function Invitation() {
             height="420px"
             style={{ border: 0 }}
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </Box>
       </Grid>
       <Grid sx={{ width: "100%" }} item sm={12} md={6}>
@@ -54,12 +55,7 @@ export function Invitation() {
             thành hôn của hai chúng tôi vào
           </p>
           <h1 style={h1Style}>ngày 17 tháng 4 năm 2024</h1>
-          <p style={pStyle}>
-            Khách sạn Mường Thanh Grand, Linh Đàm<br />
-            142 Nghiêm Xuân Yên
-            <br />
-            Hoàng Mai, Hà Nội
-          </p>
+          <p style={pStyle}>Trung tâm tiệc cưới Mường Thanh Grand, CC2 Linh Đàm, Hoàng Mai, Hà Nội</p>
         </Box>
       </Grid>
     </Grid>

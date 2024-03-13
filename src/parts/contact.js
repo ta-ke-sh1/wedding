@@ -5,7 +5,7 @@ export default function Contact() {
     <>
       <div
         style={{
-          marginTop: '240px',
+          marginTop: "240px",
           width: "100vw",
           textAlign: "center",
         }}
@@ -33,11 +33,13 @@ export default function Contact() {
                 }}
               >
                 <div
+                  className="polaroid-frame"
                   style={{
+                    transform: "rotate(4deg)",
                     marginBottom: "30px",
                     minWidth: "250px",
                     height: "30vh",
-                    width: "30vw",
+                    width: "20vw",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundImage: "url(/images/groom.jpg)",
@@ -69,11 +71,13 @@ export default function Contact() {
                 }}
               >
                 <div
+                  className="polaroid-frame"
                   style={{
+                    transform: "rotate(-4deg)",
                     marginBottom: "30px",
                     minWidth: "250px",
                     height: "30vh",
-                    width: "30vw",
+                    width: "20vw",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundImage: "url(/images/bride.jpg)",
