@@ -23,7 +23,7 @@ export default function Story() {
   };
 
   return (
-    <>
+    <div id="story">
       <Grid
         container
         sx={{
@@ -121,6 +121,6 @@ export default function Story() {
           ></div>
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 }

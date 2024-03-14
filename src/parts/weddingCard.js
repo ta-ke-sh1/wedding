@@ -22,7 +22,7 @@ export function Invitation() {
       justify="center"
       sx={{
         width: "100vw",
-        padding: "120px 0",
+        paddingTop: "120px",
       }}
     >
       <Grid sx={{ width: "100%", marginBottom: "40px", marginTop: "40px" }} item sm={12} md={6}>

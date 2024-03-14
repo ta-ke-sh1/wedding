@@ -1,5 +1,5 @@
 import Landing from "./parts/landing";
-import { ReactLenis } from "@studio-freight/react-lenis";
+import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import "./styles/main.scss";
 import "./styles/fonts.scss";
 import "./styles/nav.scss";
@@ -9,45 +9,57 @@ import Galleria from "./parts/galleria";
 import Invite from "./parts/invite";
 import Contact from "./parts/contact";
 import Navbar from "./components/navbar";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const handleScroll = () => {
-    console.log("SCroll")
+  const lenis = useLenis();
+
+  const scrollRef = useRef(null);
+
+
+  const handleScroll = (id) => {
+    lenis.scrollTo(id);
   };
 
   return (
-    <ReactLenis
-      root
-      options={{
-        lerp: 0.05,
-        wheelMultiplier: 0.5,
-        touchMultiplier: 0.5,
-      }}
-    >
-      <Navbar handleScroll={handleScroll} />
-      <main className="App">
-        <Landing />
-        <Contact />
-        <Story />
-        <Invitation />
-        <Invite />
-        <Galleria />
-      </main>
-      <div
-        style={{
-          textAlign: "center",
-          paddingBottom: "10px",
+    <div ref={scrollRef}>
+      <ReactLenis
+        root
+        options={{
+          lerp: 0.05,
+          wheelMultiplier: 0.5,
+          touchMultiplier: 0.5,
         }}
       >
-        <p
+        <div id="landing" ></div>
+        <Navbar handleScroll={handleScroll} />
+        <main className="App">
+          <Landing />
+          <Contact />
+          <Story />
+          <Invitation />
+          <Invite />
+          <Galleria />
+        </main>
+        <div
           style={{
-            lineHeight: "22px",
+            textAlign: "center",
+            paddingBottom: "10px",
           }}
         >
-          2024© Design & Developed by Trung.Ha
-        </p>
-      </div>
-    </ReactLenis>
+          <p
+            style={{
+              lineHeight: "22px",
+            }}
+          >
+            2024© Design & Developed by Trung.Ha
+          </p>
+        </div>
+      </ReactLenis>
+    </div>
   );
 }
 

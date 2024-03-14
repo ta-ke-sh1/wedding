@@ -14,11 +14,13 @@ export default function Invite() {
 
   return (
     <div
+      className="section"
+      id="rsvp"
       style={{
         position: "relative",
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: "50px",
+        paddingTop: "180px",
         paddingBottom: "50px",
         minHeight: "80vh",
       }}
@@ -108,7 +110,7 @@ function ResponseForm() {
   };
 
   return (
-    <>
+    <div>
       <Grid
         container
         spacing={3}
@@ -245,7 +247,7 @@ function ResponseForm() {
           </Button>
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 }
 

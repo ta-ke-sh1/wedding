@@ -5,7 +5,7 @@
 .nav-bar {
   height: 40px;
   background-color: red;
-  z-index: 100;
+  z-index: 1000;
   position: sticky;
   display: flex;
   width: fit-content;
@@ -36,6 +36,7 @@
   border-radius: 12px;
   transition-duration: 0.4s;
   color: rgb(194, 194, 194);
+  user-select: none;
 
   .content {
     position: absolute;

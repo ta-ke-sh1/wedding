@@ -4,8 +4,10 @@ export default function Contact() {
   return (
     <>
       <div
+        className="section"
+        id="contact"
         style={{
-          marginTop: "240px",
+          paddingTop: "140px",
           width: "100vw",
           textAlign: "center",
         }}
