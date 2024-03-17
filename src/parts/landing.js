@@ -32,7 +32,9 @@ export default function Landing(props) {
             top: "45%",
           }}
         >
-          <Box display="flex" flexDirection={"column"} justifyContent="center" alignItems="center">
+          <Box display="flex" flexDirection={"column"} justifyContent="center" alignItems="center" sx={{
+            minWidth: '400px'
+          }}>
             <div
               style={{
                 ...h1Style,
@@ -59,21 +61,32 @@ export default function Landing(props) {
               17 . 04 . 24
             </div>
             {
-              props.invitation.name ? <div
-                style={{
-                  minWidth: '340px',
-                  marginTop: '10px',
-                  color: "white",
-                  wordSpacing: "2px",
-                  fontSize: "24px",
-                }}
-              >
-                Gửi: <span style={{
-                  marginLeft: '5px',
-                  padding: '5px 10px 0px 5px',
-                  borderBottom: '1px solid white'
-                }}>{props.invitation.name}</span>
-              </div> : <></>
+              props.invitation.name ?
+                <>
+                  <div style={{
+                    marginTop: '10px',
+                    color: "white",
+                    wordSpacing: "2px",
+                    fontSize: "24px",
+                  }}>
+                    Gửi:
+                  </div>
+                  <div
+                    style={{
+                      marginTop: '10px',
+                      color: "white",
+                      wordSpacing: "2px",
+                      fontSize: "24px",
+                    }}
+                  >
+                    <span style={{
+                      marginLeft: '5px',
+                      padding: '5px 10px 0px 5px',
+                      borderBottom: '1px solid white'
+                    }}>{props.invitation.name}</span>
+                  </div>
+                </>
+                : <></>
             }
           </Box>
         </div>

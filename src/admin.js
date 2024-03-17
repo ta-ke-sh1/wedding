@@ -56,8 +56,8 @@ export default function Admin() {
     }
 
     function handleCopyLink(id) {
-        navigator.clipboard.writeText("http://" + process.env.REACT_APP_DEPLOY_URL + "invitation/" + id).then(() => {
-            toast("Copied URL: " + "http://" + process.env.REACT_APP_DEPLOY_URL + "invitation/" + id)
+        navigator.clipboard.writeText(process.env.REACT_APP_DEPLOY_URL + "invitation/" + id).then(() => {
+            toast("Copied URL: " + process.env.REACT_APP_DEPLOY_URL + "invitation/" + id)
         })
     }
 
