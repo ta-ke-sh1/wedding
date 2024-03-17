@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 
-export default function Landing() {
+export default function Landing(props) {
   const h1Style = {
     fontFamily: "italic",
     textAlign: "center",
@@ -44,7 +44,7 @@ export default function Landing() {
             </div>
             <img
               src={"/title.png"}
-              width={"100%"}
+              width={"95%"}
               style={{
                 userSelect: "none",
               }}
@@ -58,6 +58,23 @@ export default function Landing() {
             >
               17 . 04 . 24
             </div>
+            {
+              props.invitation.name ? <div
+                style={{
+                  minWidth: '340px',
+                  marginTop: '10px',
+                  color: "white",
+                  wordSpacing: "2px",
+                  fontSize: "24px",
+                }}
+              >
+                Gửi: <span style={{
+                  marginLeft: '5px',
+                  padding: '5px 10px 0px 5px',
+                  borderBottom: '1px solid white'
+                }}>{props.invitation.name}</span>
+              </div> : <></>
+            }
           </Box>
         </div>
       </div>

@@ -34,19 +34,31 @@ export default function Contact() {
                   justifyContent: "center",
                 }}
               >
-                <div
-                  className="polaroid-frame"
-                  style={{
-                    transform: "rotate(4deg)",
-                    marginBottom: "30px",
-                    minWidth: "250px",
-                    height: "30vh",
-                    width: "20vw",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundImage: "url(/images/groom.jpg)",
-                  }}
-                ></div>
+                <div>
+                  <div
+                    className="polaroid-frame"
+                    style={{
+                      transform: "rotate(4deg)",
+                      marginBottom: "30px",
+                      minWidth: "250px",
+                      height: "30vh",
+                      width: "20vw",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundImage: "url(/images/groom.jpg)",
+                    }}
+                  >
+                    <img src={"/garment/left.png"} style={{
+                      position: 'absolute',
+                      left: '-70px',
+                      bottom: '-100px',
+                      height: '230px',
+                      transform: 'rotate(-4deg)'
+                    }} />
+                  </div>
+
+                </div>
+
                 <h2>Chú rể</h2>
                 <h1>Hà Thế Trung</h1>
                 <p
@@ -84,7 +96,15 @@ export default function Contact() {
                     backgroundPosition: "center",
                     backgroundImage: "url(/images/bride.jpg)",
                   }}
-                ></div>
+                >
+                  <img src={"/garment/right.png"} style={{
+                    position: 'absolute',
+                    right: '-90px',
+                    bottom: '-110px',
+                    height: '180px',
+                    transform: 'rotate(2deg)'
+                  }} />
+                </div>
                 <h2>Cô dâu</h2>
                 <h1>Hoàng Hà Phương</h1>
                 <p
