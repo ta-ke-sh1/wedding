@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import FirebaseService from "./db/firestore";
-import { Box, Button, Checkbox, Grid, IconButton, Modal, Typography } from "@mui/material";
+import { Box, Button, Checkbox, Grid, IconButton, Modal, Snackbar, Typography } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import { ResponseForm } from "./parts/invite";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const style = {
     position: 'absolute',
@@ -35,34 +37,10 @@ export default function Admin() {
     }, [])
 
     async function GetAllInvitations() {
-        // firestoreService.getAllInvitations().then((result) => {
-        //     setInvitations(result);
-        // })
-
-        setInvitations([
-            {
-                "willAttend": false,
-                "attendees": 1,
-                "name": "Hà Thế Trung",
-                "transport": 0,
-                "guestType": 0
-            },
-            {
-                "willAttend": true,
-                "attendees": 0,
-                "name": "Hoàng Hà Phương",
-                "transport": 0,
-                "guestType": 0
-            },
-            {
-                "willAttend": true,
-                "name": "Tô Hiến Long",
-                "transport": 1,
-                "guestType": 0,
-                "id": "vTTq3dhaAVfaTkVpAABB",
-                "attendees": 3
-            },
-        ])
+        console.log("Get invitations")
+        firestoreService.getAllInvitations().then((result) => {
+            setInvitations(result);
+        })
     }
 
     const buttonStyle = {
@@ -76,6 +54,13 @@ export default function Admin() {
             color: 'white'
         },
     }
+
+    function handleCopyLink(id) {
+        navigator.clipboard.writeText("http://" + process.env.REACT_APP_DEPLOY_URL + "invitation/" + id).then(() => {
+            toast("Copied URL: " + "http://" + process.env.REACT_APP_DEPLOY_URL + "invitation/" + id)
+        })
+    }
+
 
     return (
         <div className="admin-page">
@@ -98,7 +83,7 @@ export default function Admin() {
                 <Button variant="outlined" sx={buttonStyle}>Export Data</Button>
             </div>
             <div className="table-container">
-                <InvitationTable invitations={invitations} />
+                <InvitationTable invitations={invitations} copyLink={(id) => handleCopyLink(id)} />
             </div>
             <Modal open={open}
                 onClose={handleClose}>
@@ -109,24 +94,19 @@ export default function Admin() {
                     <ResponseForm formData={formData} />
                 </Box>
             </Modal>
+            <ToastContainer position="bottom-left" />
         </div>
     )
 }
 
 
 function InvitationTable(props) {
-
-    const [selected, setSelected] = useState([])
-
-    function handleSelection(index) {
-
-    }
-
     return (
         <div className="invitation-table">
             {
                 props.invitations.map((invitation, index) => {
-                    return <InvitationRow invitation={invitation} index={index} />
+                    return <InvitationRow key={"invitation- " + index
+                    } invitation={invitation} index={index} copyLink={props.copyLink} />
                 })
             }
         </div>
@@ -166,7 +146,7 @@ function InvitationRow(props) {
     }
 
     return (
-        <div className="table-row">
+        <div className="table-row" onClick={() => props.copyLink(props.invitation.id)}>
             <InvitationCell data={props.invitation.name} />
             <InvitationCell data={getWillAttend(props.invitation.willAttend)} />
             <InvitationCell data={getGuestType(props.invitation.guestType)} />

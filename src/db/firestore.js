@@ -22,13 +22,16 @@ export default class FirebaseService {
 
     async getAllInvitations() {
         let snapshots = await getDocs(collection(db, "Invitations"))
-        return snapshots.docs.map((doc => doc.data())) ?? []
+        return snapshots.docs.map((doc => { return { id: doc.id, ...doc.data() } })) ?? []
     }
 
     async getReplyById(id) {
         let snapshot = await getDoc(doc(db, "Invitations", id))
         if (snapshot.exists()) {
-            return snapshot.data()
+            return {
+                id: id,
+                ...snapshot.data()
+            }
         } else {
             console.log("No such document! " + id);
             return null;
