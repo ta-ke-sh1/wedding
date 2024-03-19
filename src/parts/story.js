@@ -1,14 +1,7 @@
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
+import { Parallax } from "react-scroll-parallax";
 
 export default function Story() {
-  const h1Style = {
-    fontFamily: "italic",
-    textAlign: "center",
-    lineHeight: "64px",
-    fontSize: "52px",
-    marginBottom: "40px",
-  };
-
   const pStyle = {
     textAlign: "center",
     lineHeight: "26px",
@@ -43,28 +36,32 @@ export default function Story() {
           sm={12}
           md={4}
         >
-          <div
-            className="polaroid-frame show-image"
-            style={{
-              position: "absolute",
-              left: "52.5%",
-              top: "55.5%",
-              backgroundImage: "url(/images/2.jpg)",
-              transform: "rotate(-20deg) translate(-50%, -50%)",
-              ...bgImage,
-            }}
-          ></div>
-          <div
-            className="polaroid-frame show-image"
-            style={{
-              position: "absolute",
-              left: "62.5%",
-              top: "45.5%",
-              backgroundImage: "url(/images/3.jpg)",
-              transform: "rotate(-7deg) translate(-50%, -50%)",
-              ...bgImage,
-            }}
-          ></div>
+          <Parallax translateY={["350px", "280px"]} rotate={[-10, 5]}>
+            <div
+              className="polaroid-frame show-image"
+              style={{
+                position: "absolute",
+                left: "52.5%",
+                top: "55.5%",
+                backgroundImage: "url(/images/2.jpg)",
+                transform: "rotate(-20deg) translate(-50%, -50%)",
+                ...bgImage,
+              }}
+            ></div>
+          </Parallax>
+          <Parallax translateY={["500px", "280px"]} rotate={[-10, 5]}>
+            <div
+              className="polaroid-frame show-image"
+              style={{
+                position: "absolute",
+                left: "62.5%",
+                top: "45.5%",
+                backgroundImage: "url(/images/3.jpg)",
+                transform: "rotate(-7deg) translate(-50%, -50%)",
+                ...bgImage,
+              }}
+            ></div>
+          </Parallax>
         </Grid>
         <Grid
           sx={{
@@ -101,24 +98,45 @@ export default function Story() {
           sx={{
             width: "100%",
             position: "relative",
-            minHeight: "300px",
             zIndex: 100,
+            minHeight: "400px",
           }}
           item
           sm={12}
           md={4}
         >
-          <div
-            className="polaroid-frame show-image"
+          <Parallax
+            translateY={["0px", "70px"]}
+            rotate={[15, -10]}
             style={{
               position: "absolute",
               left: "50%",
-              top: "47.5%",
-              backgroundImage: "url(/images/7.jpg)",
-              transform: "rotate(6deg) translate(-50%, -50%)",
-              ...bgImage,
+              top: "30.5%",
             }}
-          ></div>
+          >
+            <div
+              className="polaroid-frame show-image"
+              style={{
+                backgroundImage: "url(/images/7.jpg)",
+                transform: " translate(-50%, -50%)",
+                ...bgImage,
+              }}
+            >
+              <Parallax
+                translateY={["-60px", "-180px"]}
+                style={{
+                  position: "absolute",
+                  left: "-70px",
+                  bottom: "-200px",
+
+                  transform: "rotate(-4deg)",
+                }}
+              >
+                {" "}
+                <img height={"190px"} src={"/garment/right.png"} />
+              </Parallax>
+            </div>
+          </Parallax>
         </Grid>
       </Grid>
     </div>

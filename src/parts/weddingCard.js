@@ -6,7 +6,7 @@ export function WeddingCard(props) {
     textAlign: "center",
     lineHeight: "38px",
     fontSize: "36px",
-    margin: '5px'
+    margin: "5px",
   };
 
   const h2Style = {
@@ -14,7 +14,7 @@ export function WeddingCard(props) {
     textAlign: "center",
     lineHeight: "26px",
     fontSize: "30px",
-    margin: '5px'
+    margin: "5px",
   };
 
   const pStyle = {
@@ -22,21 +22,21 @@ export function WeddingCard(props) {
     lineHeight: "28px",
     fontSize: "20px",
     maxWidth: "380px",
-    margin: '5px',
+    margin: "5px",
   };
 
   return (
     <Grid
+      id="rsvp"
       container
       alignItems="center"
       justify="center"
+      rowSpacing={6}
       sx={{
-        marginLeft: '2.5vw',
+        marginLeft: "2.5vw",
         width: "95vw",
-        marginTop: '80px',
-        paddingTop: "40px",
-        backgroundColor: 'white',
-        borderRadius: '10px',
+        marginTop: "80px",
+        paddingTop: "140px",
       }}
     >
       <Grid sx={{ width: "100%", marginBottom: "40px" }} item sm={12} md={5}>
@@ -44,8 +44,8 @@ export function WeddingCard(props) {
           <iframe
             title="map-to-venue"
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6365.13698448108!2d105.82689714171673!3d20.96945411566573!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acf8cb3861d9%3A0xd294605a751a1c4a!2zS2jDoWNoIHPhuqFuIE3GsOG7nW5nIFRoYW5oIEdyYW5kIEjDoCBO4buZaQ!5e0!3m2!1svi!2s!4v1710251388680!5m2!1svi!2s"
-            width="90%"
-            height="450px"
+            width="100%"
+            height="400px"
             style={{ border: 0 }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -56,7 +56,7 @@ export function WeddingCard(props) {
         <Box display="flex" flexDirection={"column"} justifyContent="center" alignItems="center">
           <h1
             style={{
-              marginTop: '-30px',
+              marginTop: "-30px",
               lineHeight: "54px",
               fontSize: "52px",
               marginBottom: "10px",
@@ -64,81 +64,71 @@ export function WeddingCard(props) {
           >
             Save the date
           </h1>
-          <p style={pStyle}>
-            Trân trọng kính mời
-          </p>
-          <h1 style={h1Style}>
-            {props.invitation.name}
-          </h1>
-          <p style={pStyle}>
-            tới dự lễ thành hôn của hai chúng tôi vào lúc
-          </p>
-          <div style={{
-            width: '95%',
-            margin: '15px 0',
-            maxWidth: '650px'
-          }}>
+          <p style={pStyle}>Trân trọng kính mời</p>
+          <h1 style={h1Style}>{props.invitation.name}</h1>
+          <p style={pStyle}>tới dự lễ thành hôn của hai chúng tôi vào lúc</p>
+          <div
+            style={{
+              width: "95%",
+              margin: "15px 0",
+              maxWidth: "650px",
+            }}
+          >
             <Grid container spacing={0}>
               <Grid item xs={12} sm={12} md={4}>
                 <Box
                   sx={{
-                    padding: '5px 0',
+                    padding: "5px 0",
                   }}
                   flexDirection={"column"}
                   display="flex"
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <p style={h2Style}>
-                    11 giờ 30'
-                  </p>
+                  <p style={h2Style}>11 giờ 30'</p>
                 </Box>
               </Grid>
               <Grid item xs={12} sm={12} md={4}>
                 <Box
                   sx={{
-                    padding: '5px 0',
+                    padding: "5px 0",
                     borderLeft: {
-                      sm: '0px solid black',
-                      md: '1px solid black',
-                    }, borderRight: {
-                      sm: '0px solid black',
-                      md: '1px solid black',
-                    }
+                      sm: "0px solid black",
+                      md: "1px solid black",
+                    },
+                    borderRight: {
+                      sm: "0px solid black",
+                      md: "1px solid black",
+                    },
                   }}
                   flexDirection={"column"}
                   display="flex"
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <p style={{ ...h2Style, }}>
-                    Thứ tư
-                  </p>
+                  <p style={{ ...h2Style }}>Thứ tư</p>
                 </Box>
               </Grid>
               <Grid item xs={12} sm={12} md={4}>
                 <Box
                   sx={{
-                    padding: '5px 0',
+                    padding: "5px 0",
                   }}
                   flexDirection={"column"}
                   display="flex"
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <p style={{ ...h2Style, minWidth: '190px' }}>
-                    17. 04. 2024
-                  </p>
+                  <p style={{ ...h2Style, minWidth: "190px" }}>17. 04. 2024</p>
                 </Box>
               </Grid>
             </Grid>
           </div>
-
           <p style={pStyle}>tại: Trung tâm tiệc cưới </p>
           <h1 style={h1Style}>Mường Thanh Grand</h1>
           <p style={pStyle}>CC2 Linh Đàm, Hoàng Mai, Hà Nội</p>
         </Box>
       </Grid>
-    </Grid >
+    </Grid>
   );
 }

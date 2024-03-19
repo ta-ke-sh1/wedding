@@ -2,7 +2,6 @@ import { Grid, FormControl, Button, FormLabel, TextField, InputLabel, Select, Me
 import { useState } from "react";
 import { pink } from "@mui/material/colors";
 import FirebaseService from "../db/firestore";
-import { Translate } from "@mui/icons-material";
 
 export default function Invite(props) {
   const pStyle = {
@@ -10,55 +9,24 @@ export default function Invite(props) {
     fontFamily: "regular",
     lineHeight: "32px",
     fontSize: "24px",
-    marginTop: "40px",
   };
 
   return (
     <div
       className="section"
-      id="rsvp"
       style={{
+        display: "flex",
+        flexDirection: "column",
         position: "relative",
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: "180px",
         paddingBottom: "50px",
-        minHeight: "80vh",
       }}
     >
-      <div
-        style={{
-          position: 'absolute',
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          width: 'fit-content'
-        }}
-      >
-        <img
-          src="/logo.png"
-          width={"100%"}
-          style={{
-            maxWidth: "320px",
-            userSelect: "none",
-          }}
-        />
-        <div>
-          <p style={{ ...pStyle, width: "75vw", maxWidth: "500px" }}>để thuận tiện cho việc sắp xếp chỗ ngồi, vui lòng phản hồi giúp vợ chồng mình nhé!</p>
-        </div>
-        <ResponseForm />
-        <div style={{
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'white'
-        }}>
-        </div>
-
+      <div>
+        <p style={{ ...pStyle, width: "75vw", maxWidth: "500px" }}>để thuận tiện cho việc sắp xếp chỗ ngồi, vui lòng phản hồi giúp vợ chồng chúng tôi nhé!</p>
       </div>
+      <ResponseForm />
     </div>
   );
 }
@@ -100,13 +68,15 @@ export function ResponseForm(props) {
   const [willAttend, setWillAttend] = useState(false);
   const [isError, setError] = useState(false);
 
-  const [formData, setFormData] = useState(props.formData ?? {
-    name: "",
-    guestType: 0,
-    willAttend: false,
-    attendees: 0,
-    transport: 0,
-  });
+  const [formData, setFormData] = useState(
+    props.formData ?? {
+      name: "",
+      guestType: 0,
+      willAttend: false,
+      attendees: 0,
+      transport: 0,
+    }
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;

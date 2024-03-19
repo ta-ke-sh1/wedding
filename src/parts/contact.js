@@ -1,4 +1,5 @@
 import { Grid } from "@mui/material";
+import { Parallax } from "react-scroll-parallax";
 
 export default function Contact() {
   return (
@@ -48,15 +49,19 @@ export default function Contact() {
                       backgroundImage: "url(/images/groom.jpg)",
                     }}
                   >
-                    <img src={"/garment/left.png"} style={{
-                      position: 'absolute',
-                      left: '-70px',
-                      bottom: '-100px',
-                      height: '230px',
-                      transform: 'rotate(-4deg)'
-                    }} />
-                  </div>
+                    <Parallax
+                      translateY={["-10px", "-80px"]}
+                      style={{
+                        position: "absolute",
+                        left: "-70px",
+                        bottom: "-100px",
 
+                        transform: "rotate(-4deg)",
+                      }}
+                    >
+                      <img height={"230px"} src={"/garment/left.png"} />
+                    </Parallax>
+                  </div>
                 </div>
 
                 <h2>Chú rể</h2>
@@ -97,13 +102,17 @@ export default function Contact() {
                     backgroundImage: "url(/images/bride.jpg)",
                   }}
                 >
-                  <img src={"/garment/right.png"} style={{
-                    position: 'absolute',
-                    right: '-90px',
-                    bottom: '-110px',
-                    height: '180px',
-                    transform: 'rotate(2deg)'
-                  }} />
+                  <Parallax
+                    translateY={["10px", "-120px"]}
+                    style={{
+                      position: "absolute",
+                      right: "-90px",
+                      bottom: "-110px",
+                      transform: "rotate(2deg)",
+                    }}
+                  >
+                    <img height={"180px"} src={"/garment/right.png"} />
+                  </Parallax>
                 </div>
                 <h2>Cô dâu</h2>
                 <h1>Hoàng Hà Phương</h1>
