@@ -22,7 +22,7 @@ export default function Landing(props) {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center top",
-          backgroundImage: "linear-gradient( rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.2) ), url(/banner.jpg)",
+          backgroundImage: "linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.2) ), url(/banner.jpg)",
           boxShadow: "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px",
         }}
       >
