@@ -133,7 +133,7 @@ export default function Story() {
                 }}
               >
                 {" "}
-                <img height={"190px"} src={"/garment/right.png"} />
+                <img height={"190px"} src={"/garment/rose.png"} />
               </Parallax>
             </div>
           </Parallax>

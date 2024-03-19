@@ -36,23 +36,23 @@ export function WeddingCard(props) {
         marginLeft: "2.5vw",
         width: "95vw",
         marginTop: "80px",
-        paddingTop: "140px",
+        paddingTop: "80px",
       }}
     >
-      <Grid sx={{ width: "100%", marginBottom: "40px" }} item sm={12} md={5}>
+      <Grid sx={{ width: "100%", marginBottom: "40px" }} item sm={12} md={12}>
         <Box display="flex" flexDirection={"column"} justifyContent="center" alignItems="center">
           <iframe
             title="map-to-venue"
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6365.13698448108!2d105.82689714171673!3d20.96945411566573!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acf8cb3861d9%3A0xd294605a751a1c4a!2zS2jDoWNoIHPhuqFuIE3GsOG7nW5nIFRoYW5oIEdyYW5kIEjDoCBO4buZaQ!5e0!3m2!1svi!2s!4v1710251388680!5m2!1svi!2s"
             width="100%"
-            height="400px"
+            height="200px"
             style={{ border: 0 }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </Box>
       </Grid>
-      <Grid sx={{ width: "100%" }} item sm={12} md={7}>
+      <Grid sx={{ width: "100%" }} item sm={12} md={12}>
         <Box display="flex" flexDirection={"column"} justifyContent="center" alignItems="center">
           <h1
             style={{
@@ -72,10 +72,11 @@ export function WeddingCard(props) {
               width: "95%",
               margin: "15px 0",
               maxWidth: "650px",
+              minWidth: "540px"
             }}
           >
             <Grid container spacing={0}>
-              <Grid item xs={12} sm={12} md={4}>
+              <Grid item xs={4} sm={4} md={4}>
                 <Box
                   sx={{
                     padding: "5px 0",
@@ -88,18 +89,12 @@ export function WeddingCard(props) {
                   <p style={h2Style}>11 giờ 30'</p>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={12} md={4}>
+              <Grid item xs={4} sm={4} md={4}>
                 <Box
                   sx={{
                     padding: "5px 0",
-                    borderLeft: {
-                      sm: "0px solid black",
-                      md: "1px solid black",
-                    },
-                    borderRight: {
-                      sm: "0px solid black",
-                      md: "1px solid black",
-                    },
+                    borderLeft: "1px solid black",
+                    borderRight: "1px solid black",
                   }}
                   flexDirection={"column"}
                   display="flex"
@@ -109,7 +104,7 @@ export function WeddingCard(props) {
                   <p style={{ ...h2Style }}>Thứ tư</p>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={12} md={4}>
+              <Grid item xs={4} sm={4} md={4}>
                 <Box
                   sx={{
                     padding: "5px 0",
@@ -119,7 +114,7 @@ export function WeddingCard(props) {
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <p style={{ ...h2Style, minWidth: "190px" }}>17. 04. 2024</p>
+                  <p style={{ ...h2Style }}>17. 04. 2024</p>
                 </Box>
               </Grid>
             </Grid>
