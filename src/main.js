@@ -21,16 +21,7 @@ export default function Main() {
     const { id } = useParams();
 
     useEffect(() => {
-        const invitationCache = JSON.parse(localStorage.getItem("invitationCache"))
-        if (invitationCache) {
-            if (invitationCache.cacheExpiration > new Date().getTime()) {
-                fetchInvitation(invitationCache.id);
-            } else {
-                setInvitation(invitationCache);
-            }
-        }
-        else if (id) {
-            console.log(id)
+        if (id) {
             fetchInvitation(id)
         }
     }, [invitation])
