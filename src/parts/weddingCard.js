@@ -2,27 +2,20 @@ import { Box, Grid } from "@mui/material";
 
 export function WeddingCard(props) {
   const h1Style = {
-    fontFamily: "italic",
     textAlign: "center",
-    lineHeight: "38px",
-    fontSize: "36px",
     margin: "5px",
   };
 
   const h2Style = {
-    fontFamily: "italic",
     textAlign: "center",
-    lineHeight: "26px",
-    fontSize: "30px",
     margin: "5px",
   };
 
   const pStyle = {
     textAlign: "center",
-    lineHeight: "28px",
-    fontSize: "20px",
     maxWidth: "380px",
-    margin: "5px",
+    margin: "0",
+    marginBottom: "5px",
   };
 
   return (
@@ -55,24 +48,27 @@ export function WeddingCard(props) {
       <Grid sx={{ width: "100%" }} item sm={12} md={12}>
         <Box display="flex" flexDirection={"column"} justifyContent="center" alignItems="center">
           <h1
+            className="title"
             style={{
-              marginTop: "-30px",
-              lineHeight: "54px",
-              fontSize: "52px",
+              marginTop: "-40px",
               marginBottom: "10px",
             }}
           >
             Save the date
           </h1>
-          <p style={pStyle}>Trân trọng kính mời</p>
+          <p className="bodyText" style={pStyle}>
+            Trân trọng kính mời
+          </p>
           <h1 style={h1Style}>{props.invitation.name}</h1>
-          <p style={pStyle}>tới dự lễ thành hôn của hai chúng tôi vào lúc</p>
+          <p className="bodyText" style={pStyle}>
+            tới dự lễ thành hôn của hai chúng tôi vào lúc
+          </p>
           <div
             style={{
               width: "95%",
               margin: "15px 0",
-              maxWidth: "650px",
-              minWidth: "540px"
+              maxWidth: "450px",
+              minWidth: "240px",
             }}
           >
             <Grid container spacing={0}>
@@ -86,7 +82,9 @@ export function WeddingCard(props) {
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <p style={h2Style}>11 giờ 30'</p>
+                  <p className="h3-title" style={h2Style}>
+                    11 giờ 30'
+                  </p>
                 </Box>
               </Grid>
               <Grid item xs={4} sm={4} md={4}>
@@ -101,7 +99,9 @@ export function WeddingCard(props) {
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <p style={{ ...h2Style }}>Thứ tư</p>
+                  <p className="h3-title" style={{ ...h2Style }}>
+                    Thứ tư
+                  </p>
                 </Box>
               </Grid>
               <Grid item xs={4} sm={4} md={4}>
@@ -114,14 +114,22 @@ export function WeddingCard(props) {
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <p style={{ ...h2Style }}>17. 04. 2024</p>
+                  <p className="h3-title" style={{ ...h2Style }}>
+                    17. 04. 2024
+                  </p>
                 </Box>
               </Grid>
             </Grid>
           </div>
-          <p style={pStyle}>tại: Trung tâm tiệc cưới </p>
-          <h1 style={h1Style}>Mường Thanh Grand</h1>
-          <p style={pStyle}>CC2 Linh Đàm, Hoàng Mai, Hà Nội</p>
+          <p className="h3-title" style={{ ...pStyle, marginBottom: "10px" }}>
+            tại: Trung tâm tiệc cưới{" "}
+          </p>
+          <h1 className="sub-title" style={{ ...h1Style, marginBottom: "15px" }}>
+            Mường Thanh Grand
+          </h1>
+          <p className="h3-title" style={pStyle}>
+            CC2 Linh Đàm, Hoàng Mai, Hà Nội
+          </p>
         </Box>
       </Grid>
     </Grid>

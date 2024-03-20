@@ -1,15 +1,31 @@
 import { Grid, FormControl, Button, FormLabel, TextField, InputLabel, Select, MenuItem, RadioGroup, Radio, FormControlLabel } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { pink } from "@mui/material/colors";
 import FirebaseService from "../db/firestore";
+import { toast } from 'react-toastify'
 
 export default function Invite(props) {
   const pStyle = {
     textAlign: "center",
     fontFamily: "regular",
-    lineHeight: "32px",
-    fontSize: "24px",
   };
+
+  const [hasResponse, setHasResponse] = useState(false);
+  const [content, setContent] = useState("")
+
+  useEffect(() => {
+
+  }, [props.invitation])
+
+  const updateResponse = (form) => {
+    setHasResponse(true)
+    console.log(form)
+    if (form.willAttend) {
+      setContent("Cảm ơn vì đã gửi phản hồi cho chúng tôi! Chúng tôi sẽ mong chờ sự hiện diện của bạn tại bữa tiệc!")
+    } else {
+      setContent("Cảm ơn vì đã gửi phản hồi cho chúng tôi! Rất tiếc vì bạn đã không thể tham dự được!")
+    }
+  }
 
   return (
     <div
@@ -23,15 +39,56 @@ export default function Invite(props) {
         paddingBottom: "50px",
       }}
     >
-      <div>
-        <p style={{ ...pStyle, width: "75vw", maxWidth: "500px" }}>để thuận tiện cho việc sắp xếp chỗ ngồi, vui lòng phản hồi giúp vợ chồng chúng tôi nhé!</p>
-      </div>
-      <ResponseForm />
+      {
+        hasResponse ? <p className="bodyText" style={{ ...pStyle, width: "75vw", maxWidth: "500px" }}>
+          {content}
+        </p> :
+          <div>
+            <p className="bodyText" style={{ ...pStyle, width: "75vw", maxWidth: "500px" }}>
+              để thuận tiện cho việc sắp xếp chỗ ngồi, vui lòng phản hồi giúp vợ chồng chúng tôi nhé!
+            </p>
+            <ResponseForm updateResponse={updateResponse} formData={props.invitation} />
+          </div>
+      }
     </div>
   );
 }
 
 export function ResponseForm(props) {
+
+  const [formData, setFormData] = useState(
+    {
+      name: "",
+      guestType: 0,
+      attendees: 1,
+      transport: 0,
+    }
+  );
+
+  const [willAttend, setWillAttend] = useState(false);
+  const [isError, setError] = useState(false);
+
+  useEffect(() => {
+    let cachedData = localStorage.getItem("invitationCache")
+    if (cachedData) {
+      const parsed = JSON.parse(cachedData);
+      setFormData(parsed)
+      setWillAttend(parsed.willAttend)
+    }
+  }, [props])
+
+
+  const refreshForm = () => {
+    setWillAttend(false);
+    setFormData({
+      name: "",
+      guestType: 0,
+      attendees: 1,
+      transport: 0,
+    });
+  };
+
+
   const sendResponse = async () => {
     const firestoreService = new FirebaseService();
     if (formData.name == "" || !formData.name) {
@@ -39,48 +96,23 @@ export function ResponseForm(props) {
       return;
     } else {
       try {
-        const oldId = localStorage.getItem("cacheResponseId");
-        if (!oldId) {
-          const id = await firestoreService.addReply(formData);
-          formData.id = id;
-          localStorage.setItem("cacheResponseId", id);
+        formData.willAttend = willAttend;
+        if (props.formData) {
+          await firestoreService.editReply(props.formData.id, formData)
         } else {
-          await firestoreService.editReply(oldId, formData);
+          await firestoreService.addReply(formData);
         }
+
         refreshForm();
+        props.updateResponse(formData)
       } catch (e) {
         console.log(e.toString());
       }
     }
   };
 
-  const refreshForm = () => {
-    setWillAttend(false);
-    setFormData({
-      name: "",
-      guestType: 0,
-      willAttend: false,
-      attendees: 0,
-      transport: 0,
-    });
-  };
-
-  const [willAttend, setWillAttend] = useState(false);
-  const [isError, setError] = useState(false);
-
-  const [formData, setFormData] = useState(
-    props.formData ?? {
-      name: "",
-      guestType: 0,
-      willAttend: false,
-      attendees: 0,
-      transport: 0,
-    }
-  );
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(formData.willAttend + " -> " + value);
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
@@ -96,7 +128,7 @@ export function ResponseForm(props) {
       container
       spacing={3}
       sx={{
-        width: { xs: "90vw", sm: "70vw", md: "60vw", lg: "45vw", xl: "30vw" },
+        width: { xs: "80vw", sm: "70vw", md: "60vw", lg: "40vw", xl: "30vw" },
       }}
     >
       <Grid item xs={12}>

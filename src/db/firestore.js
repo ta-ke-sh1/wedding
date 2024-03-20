@@ -39,10 +39,15 @@ export default class FirebaseService {
     }
 
     async addReply(reply) {
-        const docRef = await addDoc(collection(db, "Invitations"), {
-            ...reply
-        })
-        return docRef.id;
+        try {
+            const docRef = await addDoc(collection(db, "Invitations"), {
+                ...reply
+            })
+            return docRef.id;
+        } catch (e) {
+            return -1;
+        }
+
     }
 
     async editReply(id, reply) {

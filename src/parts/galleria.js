@@ -68,9 +68,8 @@ export default function Galleria() {
         }}
       >
         <h1
+          className="title"
           style={{
-            lineHeight: "64px",
-            fontSize: "52px",
             marginBottom: "20px",
           }}
         >

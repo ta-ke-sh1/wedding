@@ -1,4 +1,3 @@
-
 import Landing from "./parts/landing";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import { WeddingCard } from "./parts/weddingCard";
@@ -12,71 +11,71 @@ import { useParams } from "react-router-dom";
 import FirebaseService from "./db/firestore";
 
 export default function Main() {
-    const lenis = useLenis();
+  const lenis = useLenis();
 
-    const scrollRef = useRef(null);
+  const scrollRef = useRef(null);
 
-    const [invitation, setInvitation] = useState({});
+  const [invitation, setInvitation] = useState({});
 
-    const { id } = useParams();
+  const { id } = useParams();
 
-    useEffect(() => {
-        if (id) {
-            fetchInvitation(id)
-        }
-    }, [invitation])
-
-    const fetchInvitation = (id) => {
-        const firebaseService = new FirebaseService();
-        firebaseService.getReplyById(id).then((result) => {
-            if (result) {
-                result.cacheExpiration = new Date().getTime() / 1000;
-                localStorage.setItem("invitationCache", JSON.stringify(result))
-                setInvitation(result);
-            }
-        })
+  useEffect(() => {
+    if (id) {
+      fetchInvitation(id);
     }
+  }, [id]);
 
+  const fetchInvitation = (id) => {
+    const firebaseService = new FirebaseService();
+    firebaseService.getReplyById(id).then((result) => {
+      if (result) {
+        result.cacheExpiration = new Date().getTime() / 1000;
+        localStorage.setItem("invitationCache", JSON.stringify(result));
+        setInvitation(result);
+      }
+    });
+  };
 
-    const handleScroll = (id) => {
-        lenis.scrollTo(id);
-    };
+  const handleScroll = (id) => {
+    lenis.scrollTo(id);
+  };
 
-    return (
-        <div ref={scrollRef}>
-            <ReactLenis
-                root
-                options={{
-                    lerp: 0.05,
-                    wheelMultiplier: 0.5,
-                    touchMultiplier: 0.5,
-                }}
-            >
-                <div id="landing" ></div>
-                <Navbar handleScroll={handleScroll} />
-                <main className="App">
-                    <Landing invitation={invitation} />
-                    <Contact />
-                    <Story />
-                    <WeddingCard invitation={invitation} />
-                    <Invite invitation={invitation} />
-                    <Galleria />
-                </main>
-                <div
-                    style={{
-                        textAlign: "center",
-                        paddingBottom: "10px",
-                    }}
-                >
-                    <p
-                        style={{
-                            lineHeight: "22px",
-                        }}
-                    >
-                        2024© Design & Developed by Trung.Ha
-                    </p>
-                </div>
-            </ReactLenis>
+  return (
+    <div ref={scrollRef}>
+      <ReactLenis
+        root
+        options={{
+          syncTouch: true,
+          lerp: 0.05,
+          wheelMultiplier: 0.5,
+          touchMultiplier: 0.4,
+        }}
+      >
+        <div id="landing"></div>
+        <Navbar handleScroll={handleScroll} />
+        <main className="App">
+          <Landing invitation={invitation} />
+          <Contact />
+          <Story />
+          <WeddingCard invitation={invitation} />
+          <Invite invitation={invitation} />
+          <Galleria />
+        </main>
+        <div
+          style={{
+            textAlign: "center",
+            paddingBottom: "10px",
+          }}
+        >
+          <p
+            style={{
+              lineHeight: "22px",
+            }}
+          >
+            2024© Design & Developed by Trung.Ha
+          </p>
         </div>
-    );
+      </ReactLenis>
+    </div>
+  );
 }

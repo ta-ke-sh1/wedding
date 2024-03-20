@@ -14,15 +14,15 @@ export default function Contact() {
         }}
       >
         <h1
+          className="title"
           style={{
             textAlign: "center",
-            fontSize: "52px",
             marginBottom: "50px",
           }}
         >
           Lễ Thành Hôn
         </h1>
-        <Grid container spacing={4}>
+        <Grid container rowSpacing={7}>
           <Grid item sm={12} md={2} xs={12}></Grid>
           <Grid item sm={12} md={4} xs={12} sx={{ position: "relative" }}>
             <div className="center-positioned">
@@ -63,7 +63,6 @@ export default function Contact() {
                     </Parallax>
                   </div>
                 </div>
-
                 <h2>Chú rể</h2>
                 <h1>Hà Thế Trung</h1>
                 <p

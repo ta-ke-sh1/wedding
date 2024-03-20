@@ -4,8 +4,6 @@ import { Parallax } from "react-scroll-parallax";
 export default function Story() {
   const pStyle = {
     textAlign: "center",
-    lineHeight: "26px",
-    fontSize: "16px",
     marginBottom: "40px",
   };
 
@@ -20,16 +18,23 @@ export default function Story() {
       <Grid
         container
         sx={{
-          marginTop: "0px",
+          marginTop: "100px",
           height: "fit-content",
           width: "100vw",
+          minHeight: {
+            xs: "800px",
+            md: "600px"
+          }
         }}
       >
         <Grid
           sx={{
             width: "100%",
             position: "relative",
-            minHeight: "500px",
+            minHeight: {
+              xs: "700px",
+              md: "600px"
+            },
             zIndex: 100,
           }}
           item
@@ -66,7 +71,7 @@ export default function Story() {
         <Grid
           sx={{
             width: "100%",
-            minHeight: "700px",
+            minHeight: "800px",
             position: "relative",
           }}
           item
@@ -77,20 +82,26 @@ export default function Story() {
             style={{
               position: "absolute",
               left: "50%",
-              top: "50%",
+              top: "40%",
               padding: "0px 50px",
               width: "80%",
               transform: "translate(-50%, -50%)",
             }}
           >
-            <p style={pStyle}>
-              Elizabeth and Hudson met in 2009 during senior year of high school, during an Intro to Photography class. Students were assigned a project that required them to shoot architectural buildings throughout San Francisco. One afternoon, they ran into each other on the
-              street - they were photographing the same building, just from different vantage points! - and decided to shoot together.
+            <p style={pStyle} className="bodyText">
+              Chúng mình lần đầu gặp nhau vào một ngày Hà Nội sang thu, khi tiết trời se se lạnh, những tia nắng nhẹ trong vắt len lỏi nơi góc sân trường.
             </p>
-
-            <p style={pStyle}>
-              The afternoon turned to evening and ended with ice cream, where they talked until the shop closed. And the rest, as they say, is history. In November, after dinner at Little Star (where they had their first "real" date!), Hudson surprised Elizabeth by proposing in
-              Buena Vista Park, where they often take their dog Luna for walks.
+            <p style={pStyle} className="bodyText">
+              Bẵng đi một năm sau đó, cũng vẫn vào một ngày trời thu, chúng mình gặp lại nhau, như thể mọi thứ đã được sắp đặt từ trước. Cả hai có cơ hội được làm việc, trò chuyện để hiểu thêm về nhau, và câu chuyện tình yêu cũng bắt đầu nở rộ từ đó.
+            </p>
+            <p style={pStyle} className="bodyText">
+              2000 ngày yêu. Một con số không quá lớn, nhưng đủ để chúng mình hiểu thế nào là yêu, để chúng mình thêm nâng niu và trân quý từng khoảnh khắc bên nhau. Cả hai đã chứng kiến nhau trưởng thành, cùng nắm tay nhau đi qua mọi nỗi buồn, niềm vui của những năm tháng tuổi trẻ.
+            </p>
+            <p style={pStyle} className="bodyText">
+              Cảm ơn chúng mình vì đã biến những điều nhỏ bé trở nên diệu kì. Cảm ơn chúng mình đã khiến mọi điều phức tạp trở nên giản đơn. Cảm ơn chúng mình đã dùng sự dịu dàng để ôm ấp những ngày nắng, và dùng sự bao dung để che chở nhau đi qua những ngày mưa.
+            </p>
+            <p style={pStyle} className="bodyText">
+              Mong anh và em có thể cùng nhau đi đến nhiều nơi, cùng khám phá những điều nhỏ bé bình dị, cùng cố gắng vì những ấp ủ cho tương lai sau này. Mong anh và em sẽ luôn nắm tay kiên định bước về phía trước, để cùng nhau viết tiếp câu chuyện của 2000 ngày yêu.
             </p>
           </div>
         </Grid>

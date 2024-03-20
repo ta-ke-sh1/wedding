@@ -6,7 +6,7 @@
 }
 
 .full-view {
-  width: 100vw;
+  width: 100dvw;
 }
 
 .width-100 {
@@ -27,6 +27,16 @@
 
 .relative-position {
   position: relative;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  width: 100dvw;
+  overflow-x: hidden;
+  margin: 0;
 }
 
 body::-webkit-scrollbar {
