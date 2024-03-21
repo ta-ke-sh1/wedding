@@ -82,3 +82,41 @@ html.lenis {
   width: 200px;
   height: 280px;
 }
+
+.grid-container {
+  width: 100vw;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  &.stack {
+    min-height: 40vh;
+    display: flex;
+    flex-direction: row;
+
+    .galleria-image {
+      width: 25vw;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .item {
+      width: 80%;
+    }
+  }
+}
+
+.galleria-image {
+  width: 25vw;
+  position: relative;
+  width: 100%;
+}
+
+.item {
+  width: 25vw;
+  aspect-ratio: 1 / 1;
+  background: #aaa;
+  box-sizing: content-box;
+  position: relative;
+}

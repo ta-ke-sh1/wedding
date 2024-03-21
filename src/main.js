@@ -20,14 +20,21 @@ export default function Main() {
   const { id } = useParams();
 
   useEffect(() => {
-    if (id) {
+    console.log("rendered")
+    window.addEventListener("load", () => {
+      localStorage.removeItem("invitationCache")
+    });
+    if (id && id !== "home") {
       fetchInvitation(id);
     }
+    return function () {
+      window.removeEventListener("load", () => { });
+    };
   }, [id]);
 
-  const fetchInvitation = (id) => {
+  const fetchInvitation = async (id) => {
     const firebaseService = new FirebaseService();
-    firebaseService.getReplyById(id).then((result) => {
+    await firebaseService.getReplyById(id).then((result) => {
       if (result) {
         result.cacheExpiration = new Date().getTime() / 1000;
         localStorage.setItem("invitationCache", JSON.stringify(result));

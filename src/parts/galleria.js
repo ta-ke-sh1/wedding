@@ -17,21 +17,6 @@ export default function Galleria() {
       display: true,
     },
     {
-      id: 23,
-    },
-    {
-      id: 4,
-      display: true,
-    },
-    {
-      id: 5,
-      display: true,
-    },
-    {
-      id: 6,
-      display: true,
-    },
-    {
       id: 7,
       display: true,
     },
@@ -39,22 +24,7 @@ export default function Galleria() {
       id: 82,
     },
     {
-      id: 9,
-      display: true,
-    },
-    {
-      id: 102,
-    },
-    {
-      id: 11,
-      display: true,
-    },
-    {
       id: 12,
-      display: true,
-    },
-    {
-      id: 13,
       display: true,
     },
   ];

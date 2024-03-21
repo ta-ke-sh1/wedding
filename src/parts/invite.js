@@ -2,7 +2,6 @@ import { Grid, FormControl, Button, FormLabel, TextField, InputLabel, Select, Me
 import { useEffect, useState } from "react";
 import { pink } from "@mui/material/colors";
 import FirebaseService from "../db/firestore";
-import { toast } from 'react-toastify'
 
 export default function Invite(props) {
   const pStyle = {
@@ -19,7 +18,6 @@ export default function Invite(props) {
 
   const updateResponse = (form) => {
     setHasResponse(true)
-    console.log(form)
     if (form.willAttend) {
       setContent("Cảm ơn vì đã gửi phản hồi cho chúng tôi! Chúng tôi sẽ mong chờ sự hiện diện của bạn tại bữa tiệc!")
     } else {
@@ -69,11 +67,13 @@ export function ResponseForm(props) {
   const [isError, setError] = useState(false);
 
   useEffect(() => {
-    let cachedData = localStorage.getItem("invitationCache")
-    if (cachedData) {
-      const parsed = JSON.parse(cachedData);
-      setFormData(parsed)
-      setWillAttend(parsed.willAttend)
+    if (!window.location.href.endsWith("/secret/admin")) {
+      let cachedData = localStorage.getItem("invitationCache")
+      if (cachedData) {
+        const parsed = JSON.parse(cachedData);
+        setFormData(parsed)
+        setWillAttend(parsed.willAttend)
+      }
     }
   }, [props])
 
@@ -106,7 +106,6 @@ export function ResponseForm(props) {
         refreshForm();
         props.updateResponse(formData)
       } catch (e) {
-        console.log(e.toString());
       }
     }
   };

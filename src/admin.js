@@ -3,7 +3,7 @@ import FirebaseService from "./db/firestore";
 import { Box, Button, Checkbox, Grid, IconButton, Modal, Snackbar, Typography } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import AddIcon from '@mui/icons-material/Add';
+import CopyAllIcon from "@mui/icons-material/CopyAll"
 import { ResponseForm } from "./parts/invite";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -37,7 +37,6 @@ export default function Admin() {
     }, [])
 
     async function GetAllInvitations() {
-        console.log("Get invitations")
         firestoreService.getAllInvitations().then((result) => {
             setInvitations(result);
         })
@@ -57,7 +56,9 @@ export default function Admin() {
 
     function handleCopyLink(id) {
         navigator.clipboard.writeText(process.env.REACT_APP_DEPLOY_URL + "invitation/" + id).then(() => {
-            toast("Copied URL: " + process.env.REACT_APP_DEPLOY_URL + "invitation/" + id)
+            toast("Copied Invitation URL: " + id, {
+                position: "bottom-left"
+            })
         })
     }
 
@@ -91,7 +92,10 @@ export default function Admin() {
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         Add New Invite
                     </Typography>
-                    <ResponseForm formData={formData} />
+                    <ResponseForm updateResponse={() => {
+                        GetAllInvitations()
+                        setOpen(false)
+                    }} formData={formData} />
                 </Box>
             </Modal>
             <ToastContainer position="bottom-left" />
@@ -146,13 +150,14 @@ function InvitationRow(props) {
     }
 
     return (
-        <div className="table-row" onClick={() => props.copyLink(props.invitation.id)}>
+        <div className="table-row">
+            <InvitationCell data={props.invitation.id} />
             <InvitationCell data={props.invitation.name} />
             <InvitationCell data={getWillAttend(props.invitation.willAttend)} />
             <InvitationCell data={getGuestType(props.invitation.guestType)} />
             <InvitationCell data={props.invitation.attendees} />
             <InvitationCell data={getTransportType(props.invitation.transport)} />
-            <ActionCell />
+            <ActionCell copyHandler={() => props.copyLink(props.invitation.id)} />
         </div>
 
     )
@@ -171,13 +176,10 @@ function ActionCell(props) {
     return (
         <div className="cell" style={{ width: '7%' }}>
             <IconButton>
-                <AddIcon />
+                <CopyAllIcon onClick={props.copyHandler} />
             </IconButton>
             <IconButton>
-                <EditIcon />
-            </IconButton>
-            <IconButton>
-                <DeleteIcon />
+                <DeleteIcon onClick={props.deleteHandler} />
             </IconButton>
         </div>
     )

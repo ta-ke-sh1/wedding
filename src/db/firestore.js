@@ -33,7 +33,6 @@ export default class FirebaseService {
                 ...snapshot.data()
             }
         } else {
-            console.log("No such document! " + id);
             return null;
         }
     }
