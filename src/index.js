@@ -4,14 +4,18 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { ToastContainer } from "react-toastify";
+import { PreloaderWrapper } from "./components/preloader";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <ParallaxProvider>
       <BrowserRouter>
-        <App />
-        <ToastContainer />
+        <PreloaderWrapper value={false}>
+          <App />
+          <ToastContainer />
+        </PreloaderWrapper>
       </BrowserRouter>
     </ParallaxProvider>
   </React.StrictMode>

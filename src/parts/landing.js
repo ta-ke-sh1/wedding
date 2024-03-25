@@ -1,6 +1,10 @@
 import { Box } from "@mui/material";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function Landing(props) {
+  const landing = useRef()
+
   const h1Style = {
     fontFamily: "italic",
     textAlign: "center",
@@ -8,10 +12,25 @@ export default function Landing(props) {
     fontSize: "36px",
   };
 
+  useEffect(() => {
+    gsap.set(landing.current, {
+      y: '100%',
+      duration: 0,
+    })
+
+    gsap.to(landing.current, {
+      delay: 3.75,
+      y: '0%',
+      duration: 1.8,
+      ease: 'power2'
+    })
+  }, [])
+
   return (
     <>
       <div className="full-view section" style={{ height: "100vh", minHeight: "1000px" }}></div>
       <div
+        ref={landing}
         className="full-view absolute-position"
         style={{
           minHeight: "1000px",

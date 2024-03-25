@@ -1,8 +1,26 @@
 import { Grid } from "@mui/material";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
 
 export default function Navbar(props) {
+  const navBar = useRef()
+
+  useEffect(() => {
+    gsap.set(navBar.current, {
+      y: '-150%',
+      duration: 0,
+    })
+
+    gsap.to(navBar.current, {
+      delay: 4.25,
+      y: '0%',
+      ease: 'power',
+      duration: 1.4
+    })
+  }, [])
+
   return (
-    <div className="nav-bar">
+    <div className="nav-bar" ref={navBar}>
       <Grid
         container
         sx={{

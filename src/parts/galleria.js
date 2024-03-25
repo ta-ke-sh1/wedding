@@ -17,14 +17,19 @@ export default function Galleria() {
       display: true,
     },
     {
+      id: 3,
+      display: true,
+    },
+    {
       id: 7,
       display: true,
     },
     {
-      id: 82,
+      id: 8,
+      display: true,
     },
     {
-      id: 12,
+      id: 10,
       display: true,
     },
   ];

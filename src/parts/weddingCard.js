@@ -29,7 +29,7 @@ export function WeddingCard(props) {
         marginLeft: "2.5vw",
         width: "95vw",
         marginTop: "80px",
-        paddingTop: "80px",
+        paddingTop: "0px",
       }}
     >
       <Grid sx={{ width: "100%", marginBottom: "40px" }} item sm={12} md={12}>

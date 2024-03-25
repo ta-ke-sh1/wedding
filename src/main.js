@@ -6,29 +6,56 @@ import Galleria from "./parts/galleria";
 import Invite from "./parts/invite";
 import Contact from "./parts/contact";
 import Navbar from "./components/navbar";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import FirebaseService from "./db/firestore";
+import { usePreloader } from "./components/preloader";
 
 export default function Main() {
+  const preloader = usePreloader();
   const lenis = useLenis();
-
   const scrollRef = useRef(null);
-
   const [invitation, setInvitation] = useState({});
-
   const { id } = useParams();
+  // in seconds
+  const cacheExpiry = 500;
+
+  useLayoutEffect(() => {
+    window.addEventListener("load", () => {
+      if (lenis) {
+        lenis.stop()
+
+        setTimeout(() => {
+          lenis.start()
+        }, 4000)
+      }
+      preloader.tl.play();
+    });
+
+
+  }, [lenis])
 
   useEffect(() => {
-    console.log("rendered")
-    window.addEventListener("load", () => {
-      localStorage.removeItem("invitationCache")
-    });
     if (id && id !== "home") {
-      fetchInvitation(id);
+      const sessionData = localStorage.getItem("invitationCache");
+      if (sessionData) {
+        const parsed = JSON.parse(sessionData);
+        if (parsed.cacheExpiration < new Date().getTime() / 1000) {
+          fetchInvitation(id);
+        } else if (parsed.id !== id) {
+          fetchInvitation(id);
+        } else {
+          setInvitation(parsed);
+        }
+      } else {
+        fetchInvitation(id);
+      }
     }
+
     return function () {
-      window.removeEventListener("load", () => { });
+      window.removeEventListener("load", () => {
+        console.log("Detached");
+      });
     };
   }, [id]);
 
@@ -36,7 +63,7 @@ export default function Main() {
     const firebaseService = new FirebaseService();
     await firebaseService.getReplyById(id).then((result) => {
       if (result) {
-        result.cacheExpiration = new Date().getTime() / 1000;
+        result.cacheExpiration = new Date().getTime() / 1000 + cacheExpiry;
         localStorage.setItem("invitationCache", JSON.stringify(result));
         setInvitation(result);
       }

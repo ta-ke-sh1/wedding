@@ -1,8 +1,7 @@
-import Landing from "./parts/landing";
-import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import "./styles/main.scss";
 import "./styles/fonts.scss";
 import "./styles/nav.scss";
+import "./styles/preloader.scss";
 import "./styles/admin.scss";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";

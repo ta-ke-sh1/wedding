@@ -10,20 +10,18 @@ export default function Invite(props) {
   };
 
   const [hasResponse, setHasResponse] = useState(false);
-  const [content, setContent] = useState("")
+  const [content, setContent] = useState("");
 
-  useEffect(() => {
-
-  }, [props.invitation])
+  useEffect(() => {}, [props.invitation]);
 
   const updateResponse = (form) => {
-    setHasResponse(true)
+    setHasResponse(true);
     if (form.willAttend) {
-      setContent("Cảm ơn vì đã gửi phản hồi cho chúng tôi! Chúng tôi sẽ mong chờ sự hiện diện của bạn tại bữa tiệc!")
+      setContent("Cảm ơn vì đã gửi phản hồi cho chúng tôi! Chúng tôi sẽ mong chờ sự hiện diện của bạn tại bữa tiệc!");
     } else {
-      setContent("Cảm ơn vì đã gửi phản hồi cho chúng tôi! Rất tiếc vì bạn đã không thể tham dự được!")
+      setContent("Cảm ơn vì đã gửi phản hồi cho chúng tôi! Rất tiếc vì bạn đã không thể tham dự được!");
     }
-  }
+  };
 
   return (
     <div
@@ -37,46 +35,43 @@ export default function Invite(props) {
         paddingBottom: "50px",
       }}
     >
-      {
-        hasResponse ? <p className="bodyText" style={{ ...pStyle, width: "75vw", maxWidth: "500px" }}>
+      {hasResponse ? (
+        <p className="bodyText" style={{ ...pStyle, width: "75vw", maxWidth: "500px" }}>
           {content}
-        </p> :
-          <div>
-            <p className="bodyText" style={{ ...pStyle, width: "75vw", maxWidth: "500px" }}>
-              để thuận tiện cho việc sắp xếp chỗ ngồi, vui lòng phản hồi giúp vợ chồng chúng tôi nhé!
-            </p>
-            <ResponseForm updateResponse={updateResponse} formData={props.invitation} />
-          </div>
-      }
+        </p>
+      ) : (
+        <div>
+          <p className="bodyText" style={{ ...pStyle, width: "75vw", maxWidth: "500px" }}>
+            để thuận tiện cho việc sắp xếp chỗ ngồi, vui lòng phản hồi giúp vợ chồng chúng tôi nhé!
+          </p>
+          <ResponseForm updateResponse={updateResponse} formData={props.invitation} />
+        </div>
+      )}
     </div>
   );
 }
 
 export function ResponseForm(props) {
-
-  const [formData, setFormData] = useState(
-    {
-      name: "",
-      guestType: 0,
-      attendees: 1,
-      transport: 0,
-    }
-  );
+  const [formData, setFormData] = useState({
+    name: "",
+    guestType: 0,
+    attendees: 1,
+    transport: 0,
+  });
 
   const [willAttend, setWillAttend] = useState(false);
   const [isError, setError] = useState(false);
 
   useEffect(() => {
     if (!window.location.href.endsWith("/secret/admin")) {
-      let cachedData = localStorage.getItem("invitationCache")
+      let cachedData = localStorage.getItem("invitationCache");
       if (cachedData) {
         const parsed = JSON.parse(cachedData);
-        setFormData(parsed)
-        setWillAttend(parsed.willAttend)
+        setFormData(parsed);
+        setWillAttend(parsed.willAttend);
       }
     }
-  }, [props])
-
+  }, [props]);
 
   const refreshForm = () => {
     setWillAttend(false);
@@ -88,7 +83,6 @@ export function ResponseForm(props) {
     });
   };
 
-
   const sendResponse = async () => {
     const firestoreService = new FirebaseService();
     if (formData.name == "" || !formData.name) {
@@ -98,15 +92,14 @@ export function ResponseForm(props) {
       try {
         formData.willAttend = willAttend;
         if (props.formData) {
-          await firestoreService.editReply(props.formData.id, formData)
+          await firestoreService.editReply(props.formData.id, formData);
         } else {
           await firestoreService.addReply(formData);
         }
 
         refreshForm();
-        props.updateResponse(formData)
-      } catch (e) {
-      }
+        props.updateResponse(formData);
+      } catch (e) {}
     }
   };
 

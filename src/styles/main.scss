@@ -5,6 +5,12 @@
   transform: translate(-50%, -50%);
 }
 
+
+.no-scroll {
+  height: 100%;
+  overflow: hidden;
+}
+
 .full-view {
   width: 100dvw;
 }
