@@ -48,7 +48,7 @@ export default function Story() {
                 position: "absolute",
                 left: "52.5%",
                 top: "55.5%",
-                backgroundImage: "url(/images/2.jpg)",
+                backgroundImage: "url(/images/5.jpg)",
                 transform: "rotate(-20deg) translate(-50%, -50%)",
                 ...bgImage,
               }}
@@ -128,7 +128,7 @@ export default function Story() {
             <div
               className="polaroid-frame show-image"
               style={{
-                backgroundImage: "url(/images/7.jpg)",
+                backgroundImage: "url(/images/4.jpg)",
                 transform: " translate(-50%, -50%)",
                 ...bgImage,
               }}
