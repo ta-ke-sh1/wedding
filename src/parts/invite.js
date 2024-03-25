@@ -12,7 +12,7 @@ export default function Invite(props) {
   const [hasResponse, setHasResponse] = useState(false);
   const [content, setContent] = useState("");
 
-  useEffect(() => {}, [props.invitation]);
+  useEffect(() => { }, [props.invitation]);
 
   const updateResponse = (form) => {
     setHasResponse(true);
@@ -64,7 +64,7 @@ export function ResponseForm(props) {
 
   useEffect(() => {
     if (!window.location.href.endsWith("/secret/admin")) {
-      let cachedData = localStorage.getItem("invitationCache");
+      let cachedData = sessionStorage.getItem("invitationCache");
       if (cachedData) {
         const parsed = JSON.parse(cachedData);
         setFormData(parsed);
@@ -99,7 +99,7 @@ export function ResponseForm(props) {
 
         refreshForm();
         props.updateResponse(formData);
-      } catch (e) {}
+      } catch (e) { }
     }
   };
 

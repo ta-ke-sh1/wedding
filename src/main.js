@@ -37,7 +37,7 @@ export default function Main() {
 
   useEffect(() => {
     if (id && id !== "home") {
-      const sessionData = localStorage.getItem("invitationCache");
+      const sessionData = sessionStorage.getItem("invitationCache");
       if (sessionData) {
         const parsed = JSON.parse(sessionData);
         if (parsed.cacheExpiration < new Date().getTime() / 1000) {
@@ -64,7 +64,7 @@ export default function Main() {
     await firebaseService.getReplyById(id).then((result) => {
       if (result) {
         result.cacheExpiration = new Date().getTime() / 1000 + cacheExpiry;
-        localStorage.setItem("invitationCache", JSON.stringify(result));
+        sessionStorage.setItem("invitationCache", JSON.stringify(result));
         setInvitation(result);
       }
     });
