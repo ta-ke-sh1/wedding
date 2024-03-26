@@ -4,7 +4,7 @@ import { Parallax } from "react-scroll-parallax";
 export default function Story() {
   const pStyle = {
     textAlign: "center",
-    marginBottom: "40px",
+    marginBottom: "25px",
   };
 
   const bgImage = {
@@ -95,7 +95,10 @@ export default function Story() {
               Bẵng đi một năm sau đó, cũng vẫn vào một ngày trời thu, chúng mình gặp lại nhau, như thể mọi thứ đã được sắp đặt từ trước. Cả hai có cơ hội được làm việc, trò chuyện để hiểu thêm về nhau, và câu chuyện tình yêu cũng bắt đầu nở rộ từ đó.
             </p>
             <p style={pStyle} className="bodyText">
-              2000 ngày yêu. Một con số không quá lớn, nhưng đủ để chúng mình hiểu thế nào là yêu, để chúng mình thêm nâng niu và trân quý từng khoảnh khắc bên nhau. Cả hai đã chứng kiến nhau trưởng thành, cùng nắm tay nhau đi qua mọi nỗi buồn, niềm vui của những năm tháng tuổi trẻ.
+              2000 ngày yêu.
+            </p>
+            <p style={pStyle} className="bodyText">
+              Một con số không quá lớn, nhưng đủ để chúng mình hiểu thế nào là yêu, để chúng mình thêm nâng niu và trân quý từng khoảnh khắc bên nhau. Cả hai đã chứng kiến nhau trưởng thành, cùng nắm tay nhau đi qua mọi nỗi buồn, niềm vui của những năm tháng tuổi trẻ.
             </p>
             <p style={pStyle} className="bodyText">
               Cảm ơn chúng mình vì đã biến những điều nhỏ bé trở nên diệu kì. Cảm ơn chúng mình đã khiến mọi điều phức tạp trở nên giản đơn. Cảm ơn chúng mình đã dùng sự dịu dàng để ôm ấp những ngày nắng, và dùng sự bao dung để che chở nhau đi qua những ngày mưa.

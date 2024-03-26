@@ -40,7 +40,7 @@ export default function Invite(props) {
       ) : (
         <div>
           <p className="bodyText" style={{ ...pStyle, width: "75vw", maxWidth: "500px" }}>
-            để thuận tiện cho việc sắp xếp chỗ ngồi, vui lòng phản hồi giúp vợ chồng chúng tôi nhé!
+            để thuận tiện cho việc sắp xếp chỗ ngồi, vui lòng phản hồi<br />  giúp gia đình chúng tôi nhé!
           </p>
           <ResponseForm updateResponse={updateResponse} formData={props.invitation} />
         </div>
