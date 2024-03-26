@@ -20,6 +20,7 @@ export default function Main() {
   // in seconds
   const cacheExpiry = 500;
 
+
   useLayoutEffect(() => {
     window.addEventListener("load", () => {
       if (lenis) {
@@ -30,6 +31,7 @@ export default function Main() {
       }
       preloader.tl.play();
     });
+
   }, [lenis]);
 
   useEffect(() => {

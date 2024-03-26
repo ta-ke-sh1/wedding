@@ -8,8 +8,8 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Main from "./main";
 import Admin from "./admin";
-import { useEffect } from "react";
 gsap.registerPlugin(ScrollTrigger);
+
 
 function App() {
   return (
