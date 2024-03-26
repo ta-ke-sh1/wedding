@@ -12,7 +12,7 @@ export default function Invite(props) {
   const [hasResponse, setHasResponse] = useState(false);
   const [content, setContent] = useState("");
 
-  useEffect(() => { }, [props.invitation]);
+  useEffect(() => {}, [props.invitation]);
 
   const updateResponse = (form) => {
     setHasResponse(true);
@@ -87,19 +87,24 @@ export function ResponseForm(props) {
     const firestoreService = new FirebaseService();
     if (formData.name == "" || !formData.name) {
       setError(true);
+      console.log("error");
       return;
     } else {
+      console.log(formData);
       try {
         formData.willAttend = willAttend;
-        if (props.formData) {
+        if (props.formData.id) {
+          console.log("edit");
           await firestoreService.editReply(props.formData.id, formData);
         } else {
+          console.log("add new");
           await firestoreService.addReply(formData);
         }
 
+        sessionStorage.setItem("invitationCache", JSON.stringify(formData));
         refreshForm();
         props.updateResponse(formData);
-      } catch (e) { }
+      } catch (e) {}
     }
   };
 

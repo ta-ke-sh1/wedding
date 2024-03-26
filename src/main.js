@@ -23,20 +23,20 @@ export default function Main() {
   useLayoutEffect(() => {
     window.addEventListener("load", () => {
       if (lenis) {
-        lenis.stop()
-
+        lenis.stop();
         setTimeout(() => {
-          lenis.start()
-        }, 4000)
+          lenis.start();
+        }, 4000);
       }
       preloader.tl.play();
     });
-
-
-  }, [lenis])
+  }, [lenis]);
 
   useEffect(() => {
-    if (id && id !== "home") {
+    if (id === "home") {
+      sessionStorage.clear();
+      setInvitation({});
+    } else if (id && id !== "home") {
       const sessionData = sessionStorage.getItem("invitationCache");
       if (sessionData) {
         const parsed = JSON.parse(sessionData);
@@ -106,7 +106,7 @@ export default function Main() {
               lineHeight: "22px",
             }}
           >
-            2024© Design & Developed by Trung.Ha
+            2024? Design & Developed by Trung.Ha
           </p>
         </div>
       </ReactLenis>

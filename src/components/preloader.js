@@ -12,10 +12,11 @@ export function usePreloader() {
 export function PreloaderWrapper({ children }) {
   const container = useRef(null);
   const preloader = useRef(null);
-  const secondText = useRef(null)
+  const secondText = useRef(null);
   const mainText = useRef(null);
+  const childrenRef = useRef(null);
 
-  const delay = 1;
+  const delay = 0;
 
   const [isLoaded, setLoaded] = useState(false);
   const [tl, setTl] = useState(gsap.timeline());
@@ -30,26 +31,38 @@ export function PreloaderWrapper({ children }) {
 
     const tl = gsap.timeline();
     const ctx = gsap.context(() => {
-      tl.to(mainText.current, {
-        delay: 0.4,
-        duration: 1,
-        y: "0%",
-        ease: "power4",
-      }).to(secondText.current, {
-        delay: 0,
-        duration: 1,
-        y: "0%",
-        ease: "power4",
-      }).to(preloader.current, {
-        // TODO: preloader animation here
-        opacity: 0,
-        delay: delay,
-        duration: 1.2,
-        ease: "power",
-      }).to(preloader.current, {
-        y: '-100%',
-        duration: 0
-      });
+      if (mainText.current && secondText.current && preloader.current) {
+        tl.to(mainText.current, {
+          delay: 0.4,
+          duration: 1,
+          y: "0%",
+          ease: "power4",
+        })
+          .to(secondText.current, {
+            delay: -0.4,
+            duration: 1,
+            y: "0%",
+            ease: "power4",
+          })
+          .to(mainText.current, {
+            delay: 0.4,
+            duration: 0.8,
+            opacity: 0,
+            ease: "power4",
+          })
+          .to(secondText.current, {
+            delay: -0.6,
+            duration: 0.8,
+            opacity: 0,
+            ease: "power4",
+          })
+          .to(preloader.current, {
+            delay: 0,
+            duration: 1.4,
+            y: "-100%",
+            ease: "power2",
+          });
+      }
     }, container);
 
     const onPageLoad = () => {
@@ -83,10 +96,7 @@ export function PreloaderWrapper({ children }) {
       >
         <div className="preloader" id="first-slide" ref={preloader}>
           <div className="wrapper">
-            <div
-              className="main-text"
-
-            >
+            <div className="main-text">
               <div className="wrapper-text">
                 <div ref={mainText}>
                   Thế Trung{" "}
@@ -118,6 +128,7 @@ export function PreloaderWrapper({ children }) {
           </div>
         </div>
       </div>
+      <div ref={childrenRef}></div>
       {children}
     </Preloader.Provider>
   );
