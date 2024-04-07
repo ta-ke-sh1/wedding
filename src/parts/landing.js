@@ -36,7 +36,7 @@ export default function Landing(props) {
             return `+=${height * 1.6}px`;
           },
         },
-        backgroundPosition: window.innerWidth < 1000 ? "90% 57%" : "0% 57%",
+        backgroundPosition: window.innerWidth < 1000 ? "100% 57%" : "0% 57%",
       });
 
       gsap.to(text1.current, {
@@ -105,7 +105,7 @@ export default function Landing(props) {
 
             <img
               src={"/title.png"}
-              width={"95%"}
+              width={"80%"}
               style={{
                 userSelect: "none",
               }}
