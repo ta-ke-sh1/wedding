@@ -15,7 +15,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export default class FirebaseService {
-  constructor() {}
+  constructor() { }
 
   async getAllInvitations() {
     let snapshots = await getDocs(collection(db, "Invitations"));

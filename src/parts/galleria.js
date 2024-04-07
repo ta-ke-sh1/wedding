@@ -17,9 +17,18 @@ export default function Galleria() {
       display: true,
     },
     {
+      id: "3-1",
+      display: false,
+    },
+    {
+      id: "4-1",
+      display: false,
+    },
+    {
       id: 3,
       display: true,
     },
+
     {
       id: 4,
       display: true,
@@ -31,6 +40,19 @@ export default function Galleria() {
       id: 6,
       display: true,
     },
+    {
+      id: 7,
+      display: true,
+    },
+    {
+      id: 8,
+      display: true,
+    },
+    {
+      id: 9,
+      display: true,
+    },
+
   ];
   return (
     <div className="section" id="galleria" style={{ marginTop: "-50px" }}>
@@ -55,7 +77,7 @@ export default function Galleria() {
           padding: "40px",
         }}
       >
-        <Grid container spacing={5}>
+        <Grid container spacing={3}>
           {images.map((image) => {
             return (
               <Grid item xs={12} sm={6} md={4} key={"galleria-item-" + image.id}>
