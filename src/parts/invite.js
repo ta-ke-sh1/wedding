@@ -4,6 +4,7 @@ import { pink } from "@mui/material/colors";
 import FirebaseService from "../db/firestore";
 
 export default function Invite(props) {
+
   const pStyle = {
     textAlign: "center",
     fontFamily: "regular",
@@ -89,20 +90,29 @@ export function ResponseForm(props) {
       return;
     } else {
       console.log(formData);
+      console.log(props)
       try {
         formData.willAttend = willAttend;
         if (props.formData.id) {
           console.log("edit");
           await firestoreService.editReply(props.formData.id, formData);
+          if (props.close) {
+            props.close()
+          }
         } else {
           console.log("add new");
           await firestoreService.addReply(formData);
+          if (props.close) {
+            props.close()
+          }
         }
 
         sessionStorage.setItem("invitationCache", JSON.stringify(formData));
         refreshForm();
         props.updateResponse(formData);
-      } catch (e) { }
+      } catch (e) {
+        console.log(e.toString())
+      }
     }
   };
 

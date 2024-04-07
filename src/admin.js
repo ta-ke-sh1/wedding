@@ -22,7 +22,12 @@ const style = {
 export default function Admin() {
     const firestoreService = new FirebaseService();
     const [invitations, setInvitations] = useState([]);
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({
+        name: "",
+        guestType: 0,
+        attendees: 1,
+        transport: 0,
+    })
 
     const [open, setOpen] = useState(false);
 
@@ -34,6 +39,7 @@ export default function Admin() {
 
     useEffect(() => {
         GetAllInvitations();
+        console.log(formData)
     }, [])
 
     async function GetAllInvitations() {
@@ -62,6 +68,12 @@ export default function Admin() {
         })
     }
 
+    function handleDelete(id) {
+        firestoreService.deleteReply(id).then(() => {
+            GetAllInvitations()
+        })
+    }
+
 
     return (
         <div className="admin-page">
@@ -84,7 +96,7 @@ export default function Admin() {
                 <Button variant="outlined" sx={buttonStyle}>Export Data</Button>
             </div>
             <div className="table-container">
-                <InvitationTable invitations={invitations} copyLink={(id) => handleCopyLink(id)} />
+                <InvitationTable invitations={invitations} copyLink={(id) => handleCopyLink(id)} deleteItem={(id) => handleDelete(id)} />
             </div>
             <Modal open={open}
                 onClose={handleClose}>
@@ -92,10 +104,20 @@ export default function Admin() {
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         Add New Invite
                     </Typography>
-                    <ResponseForm updateResponse={() => {
-                        GetAllInvitations()
-                        setOpen(false)
-                    }} formData={formData} />
+                    <ResponseForm
+                        updateResponse={() => {
+                            GetAllInvitations()
+                            setOpen(false)
+                        }}
+                        formData={formData ?? {
+                            name: "",
+                            guestType: 0,
+                            attendees: 1,
+                            transport: 0,
+                        }}
+                        close={() => {
+                            setOpen(false);
+                        }} />
                 </Box>
             </Modal>
             <ToastContainer position="bottom-left" />
@@ -110,7 +132,7 @@ function InvitationTable(props) {
             {
                 props.invitations.map((invitation, index) => {
                     return <InvitationRow key={"invitation- " + index
-                    } invitation={invitation} index={index} copyLink={props.copyLink} />
+                    } invitation={invitation} index={index} copyLink={props.copyLink} deleteItem={props.deleteItem} />
                 })
             }
         </div>
@@ -150,14 +172,16 @@ function InvitationRow(props) {
     }
 
     return (
-        <div className="table-row">
+        <div className="table-row" style={{
+            minWidth: '1200px'
+        }}>
             <InvitationCell data={props.invitation.id} />
             <InvitationCell data={props.invitation.name} />
             <InvitationCell data={getWillAttend(props.invitation.willAttend)} />
             <InvitationCell data={getGuestType(props.invitation.guestType)} />
             <InvitationCell data={props.invitation.attendees} />
             <InvitationCell data={getTransportType(props.invitation.transport)} />
-            <ActionCell copyHandler={() => props.copyLink(props.invitation.id)} />
+            <ActionCell copyHandler={() => props.copyLink(props.invitation.id)} deleteHandler={() => props.deleteItem(props.invitation.id)} />
         </div>
 
     )
@@ -174,7 +198,7 @@ function InvitationCell(props) {
 
 function ActionCell(props) {
     return (
-        <div className="cell" style={{ width: '7%' }}>
+        <div className="cell">
             <IconButton>
                 <CopyAllIcon onClick={props.copyHandler} />
             </IconButton>
