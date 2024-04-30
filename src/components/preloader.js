@@ -58,10 +58,15 @@ export function PreloaderWrapper({ children }) {
           })
           .to(preloader.current, {
             delay: 0,
+            opacity: 0,
             duration: 1.4,
-            y: "-100%",
             ease: "power2",
-          });
+          }).to(preloader.current, {
+            delay: 0,
+            y: "-100%",
+            duration: 0,
+            ease: "power2",
+          });;
       }
     }, container);
 
