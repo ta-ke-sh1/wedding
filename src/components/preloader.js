@@ -120,7 +120,7 @@ export function PreloaderWrapper({ children }) {
                       fontFamily: "italic",
                     }}
                   >
-                    17.04.24
+                    17.04.24 - 25.04.24
                   </span>
                 </div>
               </div>

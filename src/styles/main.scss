@@ -5,6 +5,9 @@
   transform: translate(-50%, -50%);
 }
 
+.margin-center {
+  margin: 0 auto;
+}
 
 .no-scroll {
   height: 100%;
@@ -24,11 +27,15 @@
 }
 
 .full-view-width {
-  width: 100vw;
+  width: 100dvw;
 }
 
 .full-view-height {
-  height: 100vh;
+  height: 100dvh;
+}
+
+.absolute-position {
+  position: absolute;
 }
 
 .relative-position {
