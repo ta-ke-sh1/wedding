@@ -11,7 +11,7 @@ import HomeView from './views/homeView';
 import AssistantIcon from '@mui/icons-material/Assistant';
 
 export default function MainGalleria() {
-    const [index, setIndex] = useState(2)
+    const [index, setIndex] = useState(0)
 
 
     const components = [
