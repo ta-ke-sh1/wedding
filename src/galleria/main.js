@@ -3,17 +3,16 @@
 import GridViewIcon from '@mui/icons-material/GridView';
 import ListIcon from '@mui/icons-material/List';
 import { useState } from "react";
-import CollectionsIcon from '@mui/icons-material/Collections';
 import GridViewImages from "./views/gridView";
 import ListViewImages from "./views/listView";
 import { Tooltip } from '@mui/material';
 import { grey, pink } from '@mui/material/colors';
-import StackViewImages from './views/stackView';
 import HomeView from './views/homeView';
 import AssistantIcon from '@mui/icons-material/Assistant';
 
 export default function MainGalleria() {
-    const [index, setIndex] = useState(0)
+    const [index, setIndex] = useState(2)
+
 
     const components = [
         <div className="relative-position" style={{
@@ -41,22 +40,13 @@ export default function MainGalleria() {
             margin: 0,
             zIndex: 10
         }}>
-            <StackViewImages />
-        </div>,
-        <div className="relative-position" style={{
-            height: '100dvh',
-            width: '100dvw',
-            padding: 0,
-            margin: 0,
-            zIndex: 10
-        }}>
             <ListViewImages />
         </div>
     ]
 
     return (
         <>
-            <div className="" style={{
+            <div style={{
                 position: 'fixed',
                 bottom: '25px',
                 left: '50%',
@@ -67,6 +57,7 @@ export default function MainGalleria() {
                 backgroundColor: 'white',
                 boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)'
             }}>
+
                 <div style={{
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -75,21 +66,23 @@ export default function MainGalleria() {
                     <div style={{
                         marginLeft: 'auto',
                     }}>
-                        <Tooltip title="Thank You">
+                        <Tooltip arrow title="Thank You" placement="top" >
                             <AssistantIcon sx={{ color: index === 0 ? pink[300] : grey[500] }} onClick={() => setIndex(0)} />
                         </Tooltip>
-                        <Tooltip title="Grid" style={{
-                            marginLeft: '20px'
+                        <Tooltip arrow title="Grid" placement="top" style={{
+                            margin: '0 20px'
                         }}>
                             <GridViewIcon sx={{ color: index === 1 ? pink[300] : grey[500] }} onClick={() => setIndex(1)} />
                         </Tooltip>
-                        <Tooltip style={{
-                            margin: '0 20px'
-                        }} title="Stack">
-                            <CollectionsIcon sx={{ color: index === 2 ? pink[300] : grey[500] }} onClick={() => setIndex(2)} />
+                        <Tooltip arrow title="List" placement="top" style={{
+                            marginRight: '20px'
+                        }}>
+                            <ListIcon sx={{ color: index === 2 ? pink[300] : grey[500] }} onClick={() => setIndex(2)} />
                         </Tooltip>
-                        <Tooltip title="List">
-                            <ListIcon sx={{ color: index === 3 ? pink[300] : grey[500] }} onClick={() => setIndex(3)} />
+                        <Tooltip arrow title="Could not find your image?" placement="top" >
+                            <img src="/drive.png" height={18} style={{ marginBottom: '3px' }} onClick={() => {
+                                window.location.href = "https://drive.google.com/drive/folders/1Al56qVp4kvoOfjFhHFos96X1iqb_EApX"
+                            }} />
                         </Tooltip>
                     </div>
                 </div>

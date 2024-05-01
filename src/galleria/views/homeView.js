@@ -12,22 +12,23 @@ export default function HomeView() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     textAlign: 'center',
-                    width: '40vw',
+                    width: '30vw',
                     minWidth: "320px"
                 }} >
                     <div style={{
                         position: 'relative',
                         height: '360px',
                         width: '100%',
-                        margin: '0 auto'
+                        margin: '0 auto',
+                        transform: 'scale(0.9)'
                     }}>
                         <div style={{
                             position: 'absolute',
                             left: '37.5%',
                             top: '55%',
                             transform: 'translate(-50%, -50%) rotate(-4deg)',
-                            height: '260px',
-                            width: '200px',
+                            height: '240px',
+                            width: '180px',
                             backgroundPosition: 'center',
                             backgroundSize: 'cover',
                             backgroundImage: 'url("/wedding/hn.jpg")',
@@ -40,8 +41,8 @@ export default function HomeView() {
                             left: '60%',
                             top: '40%',
                             transform: 'translate(-50%, -50%) rotate(5deg)',
-                            height: '260px',
-                            width: '200px',
+                            height: '240px',
+                            width: '180px',
                             backgroundPosition: 'center',
                             backgroundSize: 'cover',
                             backgroundImage: 'url("/wedding/hp.jpg")',
@@ -62,23 +63,30 @@ export default function HomeView() {
                         }}></div>
                     </div>
                     <div className="italic" style={{
-                        marginTop: '30px',
-                        fontSize: '44px',
-                        marginBottom: "20px",
+                        marginTop: '0px',
+                        fontSize: '38px',
+                        marginBottom: "10px",
                         lineHeight: '42px',
                     }}>
-                        Thank you,
+                        Lời cảm ơn,
                     </div>
                     <div className="italic" style={{
-                        fontSize: '20px',
-                        lineHeight: '32px',
+                        fontSize: '16px',
+                        lineHeight: '24px',
                     }}>
-                        “We would like to thank you for sharing in our wedding celebration. We are grateful for your presence, warm wishes, and your generous gift. We look forward to our future together and to making more memories with you.”
+                        <p>
+                            Ngày cưới của chúng con đã diễn ra tuyệt vời hơn bao giờ hết nhờ có sự hiện diện của những nụ cười, lời chúc và sự ủng hộ từ tất cả quý cô, chú, anh, chị, bạn bè.
+                            Một lần nữa, thay mặt gia đình, chúng con cảm ơn tất cả quý cô, chú, anh, chị và bạn bè đã tới và gửi lời chúc từ mọi nơi.
+                            Nếu có bất kỳ thiếu sót nào trong buổi lễ, chúng con hy vọng mọi người sẽ thông cảm và bỏ qua.
+                        </p>
+                        <p>
+                            P/s: Ảnh lễ cưới ở Hải Phòng và Hà Nội có thể xem trực tiếp tại website này.<br />Nếu thiếu ảnh, mọi người hãy ấn vào icon Drive ở dưới ạ.
+                        </p>
                     </div>
                     <div className="regular" style={{
-                        fontSize: '20px',
+                        fontSize: '18px',
                         marginTop: "20px",
-                        lineHeight: '32px',
+                        lineHeight: '28px',
                     }}>
                         Thế Trung & Hà Phương <br />
                         30.04.2024
