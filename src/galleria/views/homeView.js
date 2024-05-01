@@ -75,7 +75,7 @@ export default function HomeView() {
                         lineHeight: 'calc(14px + 2vmin)',
                     }}>
                         <p>
-                            Ngày cưới của chúng con đã diễn ra tuyệt vời hơn bao giờ hết nhờ có sự hiện diện của những nụ cười, lời chúc và sự ủng hộ từ tất cả quý cô, chú, anh, chị, bạn bè.
+                            Ngày cưới của chúng con đã diễn ra tuyệt vời hơn bao giờ hết nhờ có sự hiện diện của những nụ cười, lời chúc và sự ủng hộ từ tất cả các ông, các bà, các bác, các cô, các chú, các anh chị em và bạn bè.
                             Thay mặt gia đình, chúng con cảm ơn tất cả quý cô, chú, anh, chị và bạn bè đã tới và gửi lời chúc từ mọi nơi.
                         </p>
                         <p>
