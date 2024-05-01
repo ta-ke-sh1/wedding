@@ -71,8 +71,8 @@ export default function HomeView() {
                         Lời cảm ơn,
                     </div>
                     <div className="italic" style={{
-                        fontSize: '16px',
-                        lineHeight: '24px',
+                        fontSize: 'calc(12px + 1vmin)',
+                        lineHeight: 'calc(14px + 2vmin)',
                     }}>
                         <p>
                             Ngày cưới của chúng con đã diễn ra tuyệt vời hơn bao giờ hết nhờ có sự hiện diện của những nụ cười, lời chúc và sự ủng hộ từ tất cả quý cô, chú, anh, chị, bạn bè.
@@ -83,9 +83,9 @@ export default function HomeView() {
                         </p>
                     </div>
                     <div className="regular" style={{
-                        fontSize: '18px',
                         marginTop: "10px",
-                        lineHeight: '28px',
+                        fontSize: 'calc(12px + 1vmin)',
+                        lineHeight: 'calc(14px + 2vmin)',
                     }}>
                         Thế Trung & Hà Phương <br />
                         30.04.2024
