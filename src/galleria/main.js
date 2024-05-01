@@ -32,15 +32,6 @@ export default function MainGalleria() {
             zIndex: 10
         }}>
             <GridViewImages />
-        </div>,
-        <div className="relative-position" style={{
-            height: '100dvh',
-            width: '100dvw',
-            padding: 0,
-            margin: 0,
-            zIndex: 10
-        }}>
-            <ListViewImages />
         </div>
     ]
 
@@ -73,11 +64,6 @@ export default function MainGalleria() {
                             margin: '0 20px'
                         }}>
                             <GridViewIcon sx={{ color: index === 1 ? pink[300] : grey[500] }} onClick={() => setIndex(1)} />
-                        </Tooltip>
-                        <Tooltip arrow title="List" placement="top" style={{
-                            marginRight: '20px'
-                        }}>
-                            <ListIcon sx={{ color: index === 2 ? pink[300] : grey[500] }} onClick={() => setIndex(2)} />
                         </Tooltip>
                         <Tooltip arrow title="Could not find your image?" placement="top" >
                             <img src="/drive.png" height={18} style={{ marginBottom: '3px' }} onClick={() => {

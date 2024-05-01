@@ -3,9 +3,9 @@ export default function HomeView() {
         <>
             <div className="" style={{
                 position: 'fixed',
-                top: '50%',
+                top: '47%',
                 left: '50%',
-                transform: "translate(-50%, -50%)",
+                transform: "translate(-50%, -50%) scale(0.75)",
                 zIndex: 100,
             }}>
                 <div style={{
@@ -27,8 +27,8 @@ export default function HomeView() {
                             left: '37.5%',
                             top: '55%',
                             transform: 'translate(-50%, -50%) rotate(-4deg)',
-                            height: '240px',
-                            width: '180px',
+                            height: '220px',
+                            width: '160px',
                             backgroundPosition: 'center',
                             backgroundSize: 'cover',
                             backgroundImage: 'url("/wedding/hn.jpg")',
@@ -41,8 +41,8 @@ export default function HomeView() {
                             left: '60%',
                             top: '40%',
                             transform: 'translate(-50%, -50%) rotate(5deg)',
-                            height: '240px',
-                            width: '180px',
+                            height: '220px',
+                            width: '160px',
                             backgroundPosition: 'center',
                             backgroundSize: 'cover',
                             backgroundImage: 'url("/wedding/hp.jpg")',
@@ -76,16 +76,15 @@ export default function HomeView() {
                     }}>
                         <p>
                             Ngày cưới của chúng con đã diễn ra tuyệt vời hơn bao giờ hết nhờ có sự hiện diện của những nụ cười, lời chúc và sự ủng hộ từ tất cả quý cô, chú, anh, chị, bạn bè.
-                            Một lần nữa, thay mặt gia đình, chúng con cảm ơn tất cả quý cô, chú, anh, chị và bạn bè đã tới và gửi lời chúc từ mọi nơi.
-                            Nếu có bất kỳ thiếu sót nào trong buổi lễ, chúng con hy vọng mọi người sẽ thông cảm và bỏ qua.
+                            Thay mặt gia đình, chúng con cảm ơn tất cả quý cô, chú, anh, chị và bạn bè đã tới và gửi lời chúc từ mọi nơi.
                         </p>
                         <p>
-                            P/s: Ảnh lễ cưới ở Hải Phòng và Hà Nội có thể xem trực tiếp tại website này.<br />Nếu thiếu ảnh, mọi người hãy ấn vào icon Drive ở dưới ạ.
+                            P/s: Ảnh lễ cưới ở Hải Phòng và Hà Nội có thể xem trực tiếp tại website này. Nếu thiếu ảnh, mọi người hãy ấn vào icon Drive ở dưới ạ.
                         </p>
                     </div>
                     <div className="regular" style={{
                         fontSize: '18px',
-                        marginTop: "20px",
+                        marginTop: "10px",
                         lineHeight: '28px',
                     }}>
                         Thế Trung & Hà Phương <br />
